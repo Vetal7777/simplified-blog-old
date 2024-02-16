@@ -15,9 +15,13 @@ module.exports = {
         'base-blue-dark': 'hsl(200, 100%, 30%)',
         'base-dark-gray': 'rgb(59, 59, 59)',
         'base-light-gray': 'rgb(133, 133, 133)',
-        'base-light-black': '#161a1d'
+        'base-light-black': '#161a1d',
+        lime: '#00FF00'
+      },
+      lineHeight: {
+        '85px': '85px'
       }
     }
   },
-  plugins: []
+  plugins: [require('daisyui')]
 }

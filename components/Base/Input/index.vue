@@ -1,15 +1,24 @@
 <template>
-  <div class="flex flex-col gap-2">
-    <!-- Label -->
-    <label v-if="label" class="font-bold text-black dark:text-white">
-      {{ label }}
-    </label>
-    <!-- Input -->
-    <div class="relative w-full">
+  <label class="form-control w-full max-w-xs">
+    <!-- Top labeles container -->
+    <div v-if="showTobLabel" class="label relative">
+      <!-- Left label -->
+      <span v-if="topLeftLabel" class="label-text absolute left-0">
+        {{ topLeftLabel }}
+      </span>
+      <!-- Right lebel -->
+      <span v-if="topRightLabel" class="label-text-alt absolute right-0">
+        {{ topRightLabel }}
+      </span>
+    </div>
+    <!-- Input container -->
+    <div class="relative">
+      <!-- Input -->
       <input
-        type="text"
-        class="dark:bg-base-dark-gray dark:border-base-light-gray w-full rounded border border-base-blue px-4 py-2 text-black outline-none dark:text-white"
         v-model="model"
+        type="text"
+        :placeholder="placeholder"
+        class="input input-bordered my-2 w-full max-w-full"
       />
       <!-- Clear button -->
       <button
@@ -20,20 +29,45 @@
         <Icon name="vaadin:close" class="text-base-dark-gray dark:text-white" />
       </button>
     </div>
-  </div>
+    <!-- Bottom labeles -->
+    <div v-if="showBottomLabel" class="label relative">
+      <!-- Left label -->
+      <span v-if="bottomLeftLabel" class="label-text-alt absolute left-0">
+        {{ bottomLeftLabel }}
+      </span>
+      <!-- Right label -->
+      <span v-if="bottomRightLabel" class="label-text-alt absolute right-0">
+        {{ bottomRightLabel }}
+      </span>
+    </div>
+  </label>
 </template>
 
 <script setup lang="ts">
+import { EMPTY_STRING } from '@/constants'
 import type { BaseInputProps } from './types'
 
 const emit = defineEmits()
-const props = defineProps<BaseInputProps>()
+
+const props = withDefaults(defineProps<BaseInputProps>(), {
+  topLeftLabel: undefined,
+  bottomLeftLabel: undefined,
+  topRightLabel: undefined,
+  bottomRightLabel: undefined,
+  modelValue: EMPTY_STRING,
+  clearButton: undefined,
+  placeholder: EMPTY_STRING
+})
 
 const model = computed({
   get: () => props.modelValue,
   set: (value: string) => emit('update:modelValue', value)
 })
+const showTobLabel = computed(() => props.topLeftLabel || props.topRightLabel)
+const showBottomLabel = computed(
+  () => props.bottomLeftLabel || props.bottomRightLabel
+)
 const showCloseButton = computed(() => model.value && props.clearButton)
 
-const clearModel = () => emit('update:modelValue', '')
+const clearModel = () => emit('update:modelValue', EMPTY_STRING)
 </script>
