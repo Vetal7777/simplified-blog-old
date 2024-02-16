@@ -1,5 +1,5 @@
 <template>
-  <label class="form-control w-full max-w-xs">
+  <label class="form-control w-full">
     <!-- Top labeles container -->
     <div v-if="showTobLabel" class="label relative">
       <!-- Left label -->
