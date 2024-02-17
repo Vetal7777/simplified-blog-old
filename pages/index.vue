@@ -1,15 +1,17 @@
 <template>
   <div class="flex flex-col gap-20 text-black dark:text-white">
     <FilterPanel />
-    <div>
-      <YouTubeIframe
-        title="new-2024-js-feats"
-        src="https://www.youtube.com/embed/duNEnLUxie8?si=4GJhI1GoxBMwZ3r5"
-      />
+    <div class="flex w-full flex-col gap-3">
+      <BlogPostPreview v-for="(item, key) in list" :item="item" :key="key" />
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useBlogStore } from '~/stores/blog'
 
-<style lang="scss" scoped></style>
+const blogStore = useBlogStore()
+
+const { list } = storeToRefs(blogStore)
+</script>
+~/stores/blog
