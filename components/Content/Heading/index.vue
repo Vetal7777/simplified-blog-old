@@ -16,7 +16,7 @@
       v-else
       v-model="model"
       ref="target"
-      class="bg-transparent text-3xl font-black text-black outline-none dark:text-white"
+      class="w-full bg-transparent text-3xl font-black text-black outline-none dark:text-white"
       @blur="editProcess = false"
     />
   </ContentContainer>

@@ -25,7 +25,7 @@
         Complete
       </button>
     </header>
-    <main class="flex flex-col gap-3">
+    <main class="flex flex-col gap-3 overflow-x-hidden">
       <YouTubeIframe
         v-if="state.youtube"
         :title="state.key"
