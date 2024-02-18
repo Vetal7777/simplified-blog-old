@@ -1,7 +1,14 @@
 <template>
-  <ContentContainer :editMode="editMode" @click="onFocus">
+  <ContentContainer
+    :editProcess="editProcess"
+    :editMode="editMode"
+    @click="onFocus"
+  >
     <!-- Show children -->
-    <div v-if="!isEdit" class="text-3xl font-black text-black dark:text-white">
+    <div
+      v-if="!editProcess"
+      class="text-3xl font-black text-black dark:text-white"
+    >
       {{ children }}
     </div>
     <!-- Change children -->
@@ -10,7 +17,7 @@
       v-model="model"
       ref="target"
       class="bg-transparent text-3xl font-black text-black outline-none dark:text-white"
-      @blur="isEdit = false"
+      @blur="editProcess = false"
     />
   </ContentContainer>
 </template>
@@ -21,7 +28,7 @@ import type { ContentHeadingProps } from './types'
 const props = defineProps<ContentHeadingProps>()
 const emit = defineEmits(['update:modelValue'])
 
-const isEdit = ref(false)
+const editProcess = ref(false)
 const target = ref(null)
 
 const model = computed({
@@ -31,7 +38,7 @@ const model = computed({
 
 const onFocus = async () => {
   if (props.editMode) {
-    isEdit.value = true
+    editProcess.value = true
 
     await nextTick()
     if (target.value) {
@@ -39,7 +46,7 @@ const onFocus = async () => {
 
       targetElement.focus()
     } else {
-      isEdit.value = false
+      editProcess.value = false
       throw new Error('Error with edit mode')
     }
   }

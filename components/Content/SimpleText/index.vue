@@ -1,6 +1,10 @@
 <template>
-  <ContentContainer :editMode="editMode" @click="onFocus">
-    <div v-if="!isEdit" class="pb-2 text-black dark:text-white">
+  <ContentContainer
+    :editProcess="editProcess"
+    :editMode="editMode"
+    @click="onFocus"
+  >
+    <div v-if="!editProcess" class="pb-2 text-black dark:text-white">
       {{ children }}
     </div>
     <textarea
@@ -8,7 +12,7 @@
       v-model="model"
       ref="target"
       class="w-full resize-none bg-transparent text-black outline-none dark:text-white"
-      @blur="isEdit = false"
+      @blur="editProcess = false"
     />
   </ContentContainer>
 </template>
@@ -19,7 +23,7 @@ import type { ContentSimpleTextProps } from './types'
 const props = defineProps<ContentSimpleTextProps>()
 const emit = defineEmits(['update:modelValue'])
 
-const isEdit = ref(false)
+const editProcess = ref(false)
 const target = ref(null)
 
 const model = computed({
@@ -29,7 +33,7 @@ const model = computed({
 
 const onFocus = async () => {
   if (props.editMode) {
-    isEdit.value = true
+    editProcess.value = true
 
     await nextTick()
     if (target.value) {
@@ -37,7 +41,7 @@ const onFocus = async () => {
 
       targetElement.focus()
     } else {
-      isEdit.value = false
+      editProcess.value = false
       throw new Error('Error with edit mode')
     }
   }

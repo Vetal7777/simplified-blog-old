@@ -35,6 +35,7 @@
         v-if="state.content"
         :list="editMode && editContent ? editContent : state.content"
         :editMode="editMode"
+        @remove-content-item="onRemoveContentItem"
       />
     </main>
   </div>
@@ -62,6 +63,9 @@ const onCompleted = () => {
     updatePost({ ...state.value, content: editContent.value })
     editMode.value = false
   }
+}
+const onRemoveContentItem = (removeId: string) => {
+  editContent.value = editContent.value?.filter(({ id }) => id !== removeId)
 }
 const updateEditContent = () => {
   if (state.value) {

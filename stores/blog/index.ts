@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { v4 as uuidv4 } from 'uuid'
 import { ContentTarget, PostTag } from '~/constants/blog'
 import type { PostItem } from './types'
 
@@ -12,15 +13,18 @@ export const useBlogStore = defineStore('blog', () => {
       createDate: '17 February 2024',
       content: [
         {
+          id: uuidv4(),
           target: ContentTarget.heading,
           children: 'toSorted()'
         },
         {
+          id: uuidv4(),
           target: ContentTarget.simpleText,
           children:
             'The toSorted() method of Array instances is the copying version of the sort() method. It returns a new array with the elements sorted in ascending order.'
         },
         {
+          id: uuidv4(),
           target: ContentTarget.code,
           children:
             'arr.sort()\n\n//same but without mutatuions\narr.toSorted()'

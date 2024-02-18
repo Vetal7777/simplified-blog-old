@@ -10,6 +10,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'slide-in': 'slideIn 0.3s forwards'
+      },
+      keyframes: {
+        slideIn: {
+          '0%': { transform: 'translateX(20px)' },
+          '100%': { transform: 'translateX(0px)' }
+        }
+      },
       colors: {
         'base-blue': 'hsl(200, 100%, 50%)',
         'base-blue-dark': 'hsl(200, 100%, 30%)',
@@ -23,7 +32,7 @@ module.exports = {
       },
       margin: {
         18: '72px',
-        '-4.75': '19px'
+        4.75: '19px'
       },
       padding: {
         19: '76px'

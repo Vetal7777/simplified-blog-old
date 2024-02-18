@@ -13,12 +13,17 @@ export type PostItem = {
 }
 
 export type Heading = {
+  id: string
   target: ContentTarget.heading
 } & PickChildren<ContentHeadingProps>
+
 export type SimpleText = {
+  id: string
   target: ContentTarget.simpleText
 } & PickChildren<ContentSimpleTextProps>
+
 export type Code = {
+  id: string
   target: ContentTarget.code
 } & PickChildren<ContentCodeProps>
 

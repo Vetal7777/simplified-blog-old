@@ -1,7 +1,12 @@
 <template>
-  <ContentContainer :editMode="editMode" @click="onFocus">
+  <ContentContainer
+    :editMode="editMode"
+    :editProcess="editProcess"
+    @click="onFocus"
+    @remove="$emit('remove')"
+  >
     <!-- Show children -->
-    <div class="mockup-code" v-show="!isEdit">
+    <div class="mockup-code" v-show="!editProcess">
       <pre>
         <div 
           ref="container" class="pl-19"
@@ -9,14 +14,14 @@
       </pre>
     </div>
     <!-- Change children -->
-    <div class="mockup-code" v-show="isEdit">
+    <div class="mockup-code" v-show="editProcess">
       <pre>
         <textarea
         :style="{height:`${containerHeight}px`}"
-        class="w-full resize-none bg-transparent outline-none -ml--4.75"
+        class="w-full resize-none bg-transparent outline-none -ml-4.75"
         v-model="model"
         ref="target"
-        @blur="isEdit = false"
+        @blur="editProcess = false"
         />
       </pre>
     </div>
@@ -27,9 +32,9 @@
 import type { ContentCodeProps } from './types'
 
 const props = defineProps<ContentCodeProps>()
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'remove'])
 
-const isEdit = ref(false)
+const editProcess = ref(false)
 const target = ref(null)
 const container = ref(null)
 
@@ -47,7 +52,7 @@ const model = computed({
 
 const onFocus = async () => {
   if (props.editMode) {
-    isEdit.value = true
+    editProcess.value = true
 
     await nextTick()
     if (target.value) {
@@ -55,7 +60,7 @@ const onFocus = async () => {
 
       targetElement.focus()
     } else {
-      isEdit.value = false
+      editProcess.value = false
       throw new Error('Error with edit mode')
     }
   }
