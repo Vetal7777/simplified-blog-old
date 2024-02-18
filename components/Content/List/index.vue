@@ -4,24 +4,24 @@
       <!-- Heading -->
       <ContentHeading
         v-if="item.target === ContentTarget.heading"
-        v-bind="item.props"
-        v-model="item.props.children"
+        v-model="item.children"
+        :children="item.children"
         :editMode="editMode"
         class="container"
       />
       <!-- Simple text -->
       <ContentSimpleText
         v-if="item.target === ContentTarget.simpleText"
-        v-bind="item.props"
-        v-model="item.props.children"
+        v-model="item.children"
+        :children="item.children"
         :editMode="editMode"
         class="container"
       />
       <!-- Code -->
       <ContentCode
         v-if="item.target === ContentTarget.code"
-        v-bind="item.props"
-        v-model="item.props.children"
+        v-model="item.children"
+        :children="item.children"
         :editMode="editMode"
         class="container"
       />

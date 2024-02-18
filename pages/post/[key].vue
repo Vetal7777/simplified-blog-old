@@ -20,7 +20,7 @@
       <button
         v-else
         class="btn btn-sm absolute right-0 top-0"
-        @click="editMode = false"
+        @click="onCompleted"
       >
         Complete
       </button>
@@ -33,7 +33,7 @@
       />
       <ContentList
         v-if="state.content"
-        :list="state.content"
+        :list="editMode && editContent ? editContent : state.content"
         :editMode="editMode"
       />
     </main>
@@ -42,22 +42,44 @@
 
 <script setup lang="ts">
 import { useBlogStore } from '@/stores/blog'
-import type { PostItem } from '~/stores/blog/types'
+import { useArray } from '~/composables/useArray'
+import type { Content, PostItem } from '~/stores/blog/types'
 
 const blogStore = useBlogStore()
 const route = useRoute()
 
-const { getPostByKey } = blogStore
-const state = ref<PostItem | undefined>(getPostByKey(route.params.key))
+const { deepCopy } = useArray()
+const { getPostByKey, updatePost } = blogStore
+
+const editContent = ref<Content[]>()
 const editMode = ref(false)
 
-onBeforeMount(() => {
-  if (!state.value) {
-    navigateTo({ name: 'index' })
+const state = computed<PostItem | undefined>(() =>
+  getPostByKey(route.params.key)
+)
+const onCompleted = () => {
+  if (state.value && editContent.value) {
+    updatePost({ ...state.value, content: editContent.value })
+    editMode.value = false
   }
-})
+}
+const updateEditContent = () => {
+  if (state.value) {
+    editContent.value = deepCopy(state.value.content)
+  }
+}
+
+watch(
+  () => editMode.value,
+  () => {
+    if (editMode.value) {
+      updateEditContent()
+    }
+  }
+)
 
 definePageMeta({
-  layout: 'article'
+  layout: 'article',
+  middleware: ['post-server']
 })
 </script>

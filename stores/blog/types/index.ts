@@ -9,22 +9,19 @@ export type PostItem = {
   youtube?: string
   tags: PostTag[]
   createDate: string
-  content?: Content[]
+  content: Content[]
 }
 
 export type Heading = {
   target: ContentTarget.heading
-  props: DeleteEditMode<ContentHeadingProps>
-}
+} & PickChildren<ContentHeadingProps>
 export type SimpleText = {
   target: ContentTarget.simpleText
-  props: DeleteEditMode<ContentSimpleTextProps>
-}
+} & PickChildren<ContentSimpleTextProps>
 export type Code = {
   target: ContentTarget.code
-  props: DeleteEditMode<ContentCodeProps>
-}
+} & PickChildren<ContentCodeProps>
 
-export type DeleteEditMode<T> = Omit<T, 'editMode'>
+export type PickChildren<T extends { children: unknown }> = Pick<T, 'children'>
 
 export type Content = Heading | SimpleText | Code

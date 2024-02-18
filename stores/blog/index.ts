@@ -13,23 +13,17 @@ export const useBlogStore = defineStore('blog', () => {
       content: [
         {
           target: ContentTarget.heading,
-          props: {
-            children: 'toSorted()'
-          }
+          children: 'toSorted()'
         },
         {
           target: ContentTarget.simpleText,
-          props: {
-            children:
-              'The toSorted() method of Array instances is the copying version of the sort() method. It returns a new array with the elements sorted in ascending order.'
-          }
+          children:
+            'The toSorted() method of Array instances is the copying version of the sort() method. It returns a new array with the elements sorted in ascending order.'
         },
         {
           target: ContentTarget.code,
-          props: {
-            children:
-              'arr.sort()\n\n//same but without mutatuions\narr.toSorted()'
-          }
+          children:
+            'arr.sort()\n\n//same but without mutatuions\narr.toSorted()'
         }
       ]
     }
@@ -38,5 +32,9 @@ export const useBlogStore = defineStore('blog', () => {
   const getPostByKey = (currentKey: string | string[]): PostItem | undefined =>
     list.value.find(({ key }) => currentKey === key)
 
-  return { list, getPostByKey }
+  const updatePost = (post: PostItem) => {
+    list.value = list.value.map((item) => (item.key === post.key ? post : item))
+  }
+
+  return { list, getPostByKey, updatePost }
 })
