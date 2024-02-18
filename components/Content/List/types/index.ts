@@ -1,5 +1,6 @@
 import type { Content } from '~/stores/blog/types'
 
-export type BlogPostContent = {
+export type ContentListProps = {
   list: Content[]
+  editMode?: boolean
 }

@@ -1,5 +1,5 @@
 import type { PostItem } from '~/stores/blog/types'
 
-export type BlogPostPreviewProps = {
+export type PostPreviewProps = {
   item: PostItem
 }

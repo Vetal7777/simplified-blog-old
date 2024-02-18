@@ -20,6 +20,13 @@ module.exports = {
       },
       lineHeight: {
         '85px': '85px'
+      },
+      margin: {
+        18: '72px',
+        '-4.75': '19px'
+      },
+      padding: {
+        19: '76px'
       }
     }
   },

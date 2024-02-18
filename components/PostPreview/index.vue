@@ -18,11 +18,7 @@
       <TagBadge v-for="(tag, key) in item.tags" :key="key" :tag="tag" />
       <!-- Content preview -->
       <main class="flex flex-col gap-3">
-        <BlogPostContent
-          v-if="item.content"
-          :list="item.content.slice(0, 2)"
-          class="pt-0"
-        />
+        <ContentList v-if="item.content" :list="item.content.slice(0, 2)" />
       </main>
     </div>
   </div>
@@ -30,9 +26,9 @@
 
 <script setup lang="ts">
 import { RouteName } from '~/constants/router'
-import type { BlogPostPreviewProps } from './types'
+import type { PostPreviewProps } from './types'
 
-const { item } = defineProps<BlogPostPreviewProps>()
+const { item } = defineProps<PostPreviewProps>()
 const router = useRouter()
 
 const navigateToPostPage = () => {

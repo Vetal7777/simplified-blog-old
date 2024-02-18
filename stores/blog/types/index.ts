@@ -1,6 +1,6 @@
-import type { BlogPostCodeProps } from '~/components/Blog/Post/Code/types'
-import type { BlogPostHeadingProps } from '~/components/Blog/Post/Heading/types'
-import type { BlogPostSimpleTextProps } from '~/components/Blog/Post/SimpleText/types'
+import type { ContentCodeProps } from '~/components/Content/Code/types'
+import type { ContentHeadingProps } from '~/components/Content/Heading/types'
+import type { ContentSimpleTextProps } from '~/components/Content/SimpleText/types'
 import type { ContentTarget, PostTag } from '~/constants/blog'
 
 export type PostItem = {
@@ -14,15 +14,15 @@ export type PostItem = {
 
 export type Heading = {
   target: ContentTarget.heading
-  props: BlogPostHeadingProps
+  props: ContentHeadingProps
 }
 export type SimpleText = {
   target: ContentTarget.simpleText
-  props: BlogPostSimpleTextProps
+  props: ContentSimpleTextProps
 }
 export type Code = {
   target: ContentTarget.code
-  props: BlogPostCodeProps
+  props: ContentCodeProps
 }
 
 export type Content = Heading | SimpleText | Code
