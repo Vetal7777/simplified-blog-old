@@ -6,7 +6,7 @@ import type { ContentTarget, PostTag } from '~/constants/blog'
 export type PostItem = {
   title: string
   key: string
-  youtube: string
+  youtube?: string
   tags: PostTag[]
   createDate: string
   content?: Content[]
@@ -14,15 +14,17 @@ export type PostItem = {
 
 export type Heading = {
   target: ContentTarget.heading
-  props: ContentHeadingProps
+  props: DeleteEditMode<ContentHeadingProps>
 }
 export type SimpleText = {
   target: ContentTarget.simpleText
-  props: ContentSimpleTextProps
+  props: DeleteEditMode<ContentSimpleTextProps>
 }
 export type Code = {
   target: ContentTarget.code
-  props: ContentCodeProps
+  props: DeleteEditMode<ContentCodeProps>
 }
+
+export type DeleteEditMode<T> = Omit<T, 'editMode'>
 
 export type Content = Heading | SimpleText | Code

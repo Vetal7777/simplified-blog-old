@@ -2,7 +2,7 @@
   <div v-if="state" class="flex flex-col gap-7">
     <header class="relative flex">
       <!-- Header content -->
-      <div class="mr-18 flex flex-col gap-2">
+      <div class="mr-24 flex flex-col gap-2">
         <div class="text-4xl font-black text-black dark:text-white">
           {{ state.title }}
         </div>
@@ -26,7 +26,11 @@
       </button>
     </header>
     <main class="flex flex-col gap-3">
-      <YouTubeIframe :title="state.key" :src="state.youtube" />
+      <YouTubeIframe
+        v-if="state.youtube"
+        :title="state.key"
+        :src="state.youtube"
+      />
       <ContentList
         v-if="state.content"
         :list="state.content"
