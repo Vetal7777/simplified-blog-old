@@ -1,5 +1,7 @@
 <template>
-  <div :class="['rounded-lg border border-transparent ', { edit: editMode }]">
+  <div
+    :class="['rounded-lg border border-transparent p-1 ', { edit: editMode }]"
+  >
     <slot />
   </div>
 </template>
@@ -12,6 +14,6 @@ defineProps<ContentContainerProps>()
 
 <style lang="scss" scoped>
 .edit:hover {
-  @apply cursor-pointer border-white;
+  @apply cursor-pointer border-black dark:border-white;
 }
 </style>
