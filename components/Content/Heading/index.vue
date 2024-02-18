@@ -7,7 +7,7 @@
     <!-- Show children -->
     <div
       v-if="!editProcess"
-      class="text-3xl font-black text-black dark:text-white"
+      class="break-all text-3xl font-black text-black dark:text-white"
     >
       {{ children }}
     </div>

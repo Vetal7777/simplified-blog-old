@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'relative rounded-lg border border-transparent p-1 ',
+      'relative min-w-full rounded-lg border border-transparent p-1',
       { edit: editMode }
     ]"
   >
@@ -31,7 +31,7 @@ defineProps<ContentContainerProps>()
   @apply cursor-pointer border-black dark:border-white;
 
   .delete-button {
-    @apply animate-slide-in flex;
+    @apply flex animate-slide-in;
   }
 }
 </style>
