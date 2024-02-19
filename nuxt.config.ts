@@ -7,8 +7,5 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
-  css: ['~/assets/css/tailwindcss.css'],
-  app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
-  }
+  css: ['~/assets/css/tailwindcss.css']
 })

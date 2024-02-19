@@ -29,6 +29,7 @@
         @remove="$emit('remove-content-item', item.id)"
       />
     </template>
+    <ContentEditor :editMode="editMode" />
   </div>
 </template>
 

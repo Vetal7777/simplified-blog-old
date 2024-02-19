@@ -2,7 +2,7 @@
   <div v-if="state" class="flex flex-col gap-7">
     <header class="relative flex">
       <!-- Header content -->
-      <div class="mr-24 flex flex-col gap-2">
+      <div class="mr-48 flex flex-col gap-2">
         <div class="text-4xl font-black text-black dark:text-white">
           {{ state.title }}
         </div>
@@ -17,13 +17,13 @@
       >
         Edit
       </button>
-      <button
-        v-else
-        class="btn btn-sm absolute right-0 top-0"
-        @click="onCompleted"
-      >
-        Complete
-      </button>
+      <template v-else>
+        <div class="absolute right-0 top-0 flex gap-3">
+          <button class="btn btn-sm" @click="onCancel">Cancel</button>
+
+          <button class="btn btn-sm" @click="onCompleted">Complete</button>
+        </div>
+      </template>
     </header>
     <main class="flex flex-col gap-3 overflow-x-hidden">
       <YouTubeIframe
@@ -52,7 +52,7 @@ const route = useRoute()
 const { deepCopy } = useArray()
 const { getPostByKey, updatePost } = blogStore
 
-const editContent = ref<Content[]>()
+const editContent = ref<Content[] | null>(null)
 const editMode = ref(false)
 
 const state = computed<PostItem | undefined>(() =>
@@ -62,10 +62,18 @@ const onCompleted = () => {
   if (state.value && editContent.value) {
     updatePost({ ...state.value, content: editContent.value })
     editMode.value = false
+    editContent.value = null
   }
 }
+
+const onCancel = () => {
+  editMode.value = false
+  editContent.value = null
+}
 const onRemoveContentItem = (removeId: string) => {
-  editContent.value = editContent.value?.filter(({ id }) => id !== removeId)
+  if (editContent.value?.length) {
+    editContent.value = editContent.value?.filter(({ id }) => id !== removeId)
+  }
 }
 const updateEditContent = () => {
   if (state.value) {
