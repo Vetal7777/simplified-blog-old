@@ -22,9 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import type { ContentEditorProps } from './types'
+import { useAppStore } from '~/stores/app'
 
-defineProps<ContentEditorProps>()
+const appStore = useAppStore()
+
+const { editMode } = storeToRefs(appStore)
 </script>
 
 <style lang="scss" scoped>

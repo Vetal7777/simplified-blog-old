@@ -1,9 +1,5 @@
 <template>
-  <ContentContainer
-    :editProcess="editProcess"
-    :editMode="editMode"
-    @click="onFocus"
-  >
+  <ContentContainer :editProcess="editProcess" @click="onFocus">
     <div v-if="!editProcess" class="pb-2 text-black dark:text-white">
       {{ children }}
     </div>
@@ -18,10 +14,15 @@
 </template>
 
 <script setup lang="ts">
+import { useAppStore } from '~/stores/app'
 import type { ContentSimpleTextProps } from './types'
 
 const props = defineProps<ContentSimpleTextProps>()
 const emit = defineEmits(['update:modelValue'])
+
+const appStore = useAppStore()
+
+const { editMode } = storeToRefs(appStore)
 
 const editProcess = ref(false)
 const target = ref(null)
@@ -32,7 +33,7 @@ const model = computed({
 })
 
 const onFocus = async () => {
-  if (props.editMode) {
+  if (editMode.value) {
     editProcess.value = true
 
     await nextTick()

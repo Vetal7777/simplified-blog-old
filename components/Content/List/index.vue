@@ -7,7 +7,6 @@
         v-model="item.children"
         class="container"
         :children="item.children"
-        :editMode="editMode"
         @remove="$emit('remove-content-item', item.id)"
       />
       <!-- Simple text -->
@@ -16,7 +15,6 @@
         v-model="item.children"
         class="container"
         :children="item.children"
-        :editMode="editMode"
         @remove="$emit('remove-content-item', item.id)"
       />
       <!-- Code -->
@@ -25,17 +23,21 @@
         v-model="item.children"
         class="container"
         :children="item.children"
-        :editMode="editMode"
         @remove="$emit('remove-content-item', item.id)"
       />
     </template>
-    <ContentEditor :editMode="editMode" />
+    <ContentEditor />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ContentTarget } from '~/constants/blog'
+import { useAppStore } from '~/stores/app'
 import type { ContentListProps } from './types'
 
-const { list, editMode } = defineProps<ContentListProps>()
+defineProps<ContentListProps>()
+
+const appStore = useAppStore()
+
+const { editMode } = storeToRefs(appStore)
 </script>

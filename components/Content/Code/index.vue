@@ -1,6 +1,5 @@
 <template>
   <ContentContainer
-    :editMode="editMode"
     :editProcess="editProcess"
     @click="onFocus"
     @remove="$emit('remove')"
@@ -29,10 +28,15 @@
 </template>
 
 <script setup lang="ts">
+import { useAppStore } from '~/stores/app'
 import type { ContentCodeProps } from './types'
 
 const props = defineProps<ContentCodeProps>()
 const emit = defineEmits(['update:modelValue', 'remove'])
+
+const appStore = useAppStore()
+
+const { editMode } = storeToRefs(appStore)
 
 const editProcess = ref(false)
 const target = ref(null)
@@ -51,7 +55,7 @@ const model = computed({
 })
 
 const onFocus = async () => {
-  if (props.editMode) {
+  if (editMode.value) {
     editProcess.value = true
 
     await nextTick()

@@ -21,9 +21,14 @@
 </template>
 
 <script setup lang="ts">
+import { useAppStore } from '~/stores/app'
 import type { ContentContainerProps } from './types'
 
 defineProps<ContentContainerProps>()
+
+const appStore = useAppStore()
+
+const { editMode } = storeToRefs(appStore)
 </script>
 
 <style lang="scss" scoped>

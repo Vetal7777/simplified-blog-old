@@ -10,20 +10,11 @@
         <TagBadge v-for="(tag, key) in state.tags" :tag="tag" :key="key" />
       </div>
       <!-- Header edit button -->
-      <button
-        v-if="!editMode"
-        class="btn btn-sm absolute right-0 top-0"
-        @click="editMode = true"
-      >
-        Edit
-      </button>
-      <template v-else>
-        <div class="absolute right-0 top-0 flex gap-3">
-          <button class="btn btn-sm" @click="onCancel">Cancel</button>
-
-          <button class="btn btn-sm" @click="onCompleted">Complete</button>
-        </div>
-      </template>
+      <PostController
+        v-if="isAdmin"
+        @cancel="onCancel"
+        @complete="onComplete"
+      />
     </header>
     <main class="flex flex-col gap-3 overflow-x-hidden">
       <YouTubeIframe
@@ -34,7 +25,6 @@
       <ContentList
         v-if="state.content"
         :list="editMode && editContent ? editContent : state.content"
-        :editMode="editMode"
         @remove-content-item="onRemoveContentItem"
       />
     </main>
@@ -44,21 +34,26 @@
 <script setup lang="ts">
 import { useBlogStore } from '@/stores/blog'
 import { useArray } from '~/composables/useArray'
+import { useAppStore } from '~/stores/app'
 import type { Content, PostItem } from '~/stores/blog/types'
+import { useUserStore } from '~/stores/user'
 
 const blogStore = useBlogStore()
+const appStore = useAppStore()
+const userStore = useUserStore()
 const route = useRoute()
 
 const { deepCopy } = useArray()
 const { getPostByKey, updatePost } = blogStore
 
 const editContent = ref<Content[] | null>(null)
-const editMode = ref(false)
+const { editMode } = storeToRefs(appStore)
+const { isAdmin } = storeToRefs(userStore)
 
 const state = computed<PostItem | undefined>(() =>
   getPostByKey(route.params.key)
 )
-const onCompleted = () => {
+const onComplete = () => {
   if (state.value && editContent.value) {
     updatePost({ ...state.value, content: editContent.value })
     editMode.value = false
@@ -89,6 +84,10 @@ watch(
     }
   }
 )
+
+onBeforeUnmount(() => {
+  editMode.value = false
+})
 
 definePageMeta({
   layout: 'article',

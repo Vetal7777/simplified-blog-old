@@ -1,9 +1,5 @@
 <template>
-  <ContentContainer
-    :editProcess="editProcess"
-    :editMode="editMode"
-    @click="onFocus"
-  >
+  <ContentContainer :editProcess="editProcess" @click="onFocus">
     <!-- Show children -->
     <div
       v-if="!editProcess"
@@ -23,10 +19,15 @@
 </template>
 
 <script setup lang="ts">
+import { useAppStore } from '~/stores/app'
 import type { ContentHeadingProps } from './types'
 
 const props = defineProps<ContentHeadingProps>()
 const emit = defineEmits(['update:modelValue'])
+
+const appStore = useAppStore()
+
+const { editMode } = storeToRefs(appStore)
 
 const editProcess = ref(false)
 const target = ref(null)
@@ -37,7 +38,7 @@ const model = computed({
 })
 
 const onFocus = async () => {
-  if (props.editMode) {
+  if (editMode.value) {
     editProcess.value = true
 
     await nextTick()
