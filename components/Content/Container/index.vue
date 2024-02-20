@@ -6,17 +6,11 @@
     ]"
   >
     <slot />
-    <div
+    <BaseDeleteButton
+      class="delete-button"
       v-if="editMode && !editProcess"
-      class="delete-button absolute right-4 top-0 hidden h-full items-center justify-center"
-    >
-      <button
-        class="btn btn-circle h-6 min-h-6 w-6"
-        @click.stop="$emit('remove')"
-      >
-        <Icon name="tabler:trash-filled" color="red" />
-      </button>
-    </div>
+      @click="$emit('remove')"
+    />
   </div>
 </template>
 

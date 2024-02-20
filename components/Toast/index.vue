@@ -26,8 +26,6 @@ import { useToastStore } from '~/stores/toast'
 
 const toastStore = useToastStore()
 const { state } = storeToRefs(toastStore)
-
-const { showToast } = toastStore
 </script>
 
 <style scoped lang="scss">

@@ -39,6 +39,9 @@ export const useBlogStore = defineStore('blog', () => {
   const updatePost = (post: PostItem) => {
     list.value = list.value.map((item) => (item.key === post.key ? post : item))
   }
+  const deletePost = (post: PostItem) => {
+    list.value = list.value.filter((item) => item.key !== post.key)
+  }
 
-  return { list, getPostByKey, updatePost }
+  return { list, getPostByKey, updatePost, deletePost }
 })

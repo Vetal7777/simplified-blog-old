@@ -21,17 +21,36 @@
         <ContentList v-if="item.content" :list="item.content.slice(0, 2)" />
       </main>
     </div>
+    <BaseDeleteButton
+      v-if="isAdmin"
+      class="delete-button"
+      @click="deletePost(item)"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { RouteName } from '~/constants/router'
+import { useBlogStore } from '~/stores/blog'
+import { useUserStore } from '~/stores/user'
 import type { PostPreviewProps } from './types'
 
 const { item } = defineProps<PostPreviewProps>()
 const router = useRouter()
+const userStore = useUserStore()
+const blogStore = useBlogStore()
+
+const { isAdmin } = storeToRefs(userStore)
+
+const { deletePost } = blogStore
 
 const navigateToPostPage = () => {
   router.push({ name: RouteName.post, params: { key: item.key } })
 }
 </script>
+
+<style lang="scss" scoped>
+.card:hover .delete-button {
+  @apply flex animate-slide-in;
+}
+</style>
