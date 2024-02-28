@@ -1,5 +1,5 @@
+import uuid from '@/helpers/uuid'
 import { defineStore } from 'pinia'
-import { v4 as uuidv4 } from 'uuid'
 import { ContentTarget, PostTag } from '~/constants/blog'
 import type { PostItem } from './types'
 
@@ -13,19 +13,19 @@ export const useBlogStore = defineStore('blog', () => {
       createDate: '17 February 2024',
       content: [
         {
-          id: uuidv4(),
+          id: uuid(),
           target: ContentTarget.heading,
           children: 'toSorted()',
           link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted'
         },
         {
-          id: uuidv4(),
+          id: uuid(),
           target: ContentTarget.simpleText,
           children:
             'The toSorted() method of Array instances is the copying version of the sort() method. It returns a new array with the elements sorted in ascending order.'
         },
         {
-          id: uuidv4(),
+          id: uuid(),
           target: ContentTarget.code,
           children:
             'arr.sort()\n\n//same but without mutatuions\narr.toSorted()'
