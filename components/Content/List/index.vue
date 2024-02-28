@@ -7,6 +7,7 @@
         v-model="item.children"
         class="container"
         :children="item.children"
+        :link="item.link"
         @remove="$emit('remove-content-item', item.id)"
       />
       <!-- Simple text -->

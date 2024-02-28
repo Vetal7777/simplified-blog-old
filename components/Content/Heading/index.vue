@@ -1,20 +1,31 @@
 <template>
   <ContentContainer :editProcess="editProcess" @click="onFocus">
-    <!-- Show children -->
-    <div
-      v-if="!editProcess"
-      class="break-all text-3xl font-black text-black dark:text-white"
-    >
-      {{ children }}
-    </div>
     <!-- Change children -->
     <input
-      v-else
+      v-if="editProcess"
       v-model="model"
       ref="target"
       class="w-full bg-transparent text-3xl font-black text-black outline-none dark:text-white"
       @blur="editProcess = false"
     />
+    <!-- Show children -->
+    <temaplate v-else>
+      <!-- If Link -->
+      <a
+        v-if="link"
+        :href="link"
+        class="break-all text-3xl font-black text-black hover:underline dark:text-white"
+      >
+        {{ children }}
+      </a>
+      <!-- Simple heading -->
+      <div
+        v-else
+        class="break-all text-3xl font-black text-black dark:text-white"
+      >
+        {{ children }}
+      </div>
+    </temaplate>
   </ContentContainer>
 </template>
 

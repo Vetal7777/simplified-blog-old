@@ -15,7 +15,8 @@ export const useBlogStore = defineStore('blog', () => {
         {
           id: uuidv4(),
           target: ContentTarget.heading,
-          children: 'toSorted()'
+          children: 'toSorted()',
+          link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted'
         },
         {
           id: uuidv4(),

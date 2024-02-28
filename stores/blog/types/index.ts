@@ -15,7 +15,8 @@ export type PostItem = {
 export type Heading = {
   id: string
   target: ContentTarget.heading
-} & PickChildren<ContentHeadingProps>
+} & PickChildren<ContentHeadingProps> &
+  PickLink<ContentHeadingProps>
 
 export type SimpleText = {
   id: string
@@ -28,5 +29,7 @@ export type Code = {
 } & PickChildren<ContentCodeProps>
 
 export type PickChildren<T extends { children: unknown }> = Pick<T, 'children'>
+
+export type PickLink<T extends { link?: unknown }> = Pick<T, 'link'>
 
 export type Content = Heading | SimpleText | Code
