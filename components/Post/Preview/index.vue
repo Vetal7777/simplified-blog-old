@@ -22,9 +22,9 @@
       </main>
     </div>
     <BaseDeleteButton
-      v-if="isAdmin"
+      v-if="showDeleteBtn"
       class="delete-button"
-      @click="deletePost(item)"
+      @remove="deletePost(item)"
     />
   </div>
 </template>
@@ -40,13 +40,14 @@ const router = useRouter()
 const userStore = useUserStore()
 const blogStore = useBlogStore()
 
-const { isAdmin } = storeToRefs(userStore)
+const { isAdmin, isAuth } = storeToRefs(userStore)
 
 const { deletePost } = blogStore
 
 const navigateToPostPage = () => {
   router.push({ name: RouteName.post, params: { key: item.key } })
 }
+const showDeleteBtn = computed(() => isAuth.value && isAdmin.value)
 </script>
 
 <style lang="scss" scoped>

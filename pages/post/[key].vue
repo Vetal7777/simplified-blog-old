@@ -11,7 +11,7 @@
       </div>
       <!-- Header edit button -->
       <PostController
-        v-if="isAdmin"
+        v-if="showController"
         @cancel="onCancel"
         @complete="onComplete"
       />
@@ -48,11 +48,12 @@ const { getPostByKey, updatePost } = blogStore
 
 const editContent = ref<Content[] | null>(null)
 const { editMode } = storeToRefs(appStore)
-const { isAdmin } = storeToRefs(userStore)
+const { isAdmin, isAuth } = storeToRefs(userStore)
 
 const state = computed<PostItem | undefined>(() =>
   getPostByKey(route.params.key)
 )
+const showController = computed(() => isAdmin.value && isAuth.value)
 const onComplete = () => {
   if (state.value && editContent.value) {
     updatePost({ ...state.value, content: editContent.value })

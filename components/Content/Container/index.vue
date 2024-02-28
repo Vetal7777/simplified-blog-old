@@ -9,7 +9,7 @@
     <BaseDeleteButton
       class="delete-button"
       v-if="editMode && !editProcess"
-      @click="$emit('remove')"
+      @remove="$emit('remove')"
     />
   </div>
 </template>
