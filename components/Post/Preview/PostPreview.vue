@@ -15,7 +15,11 @@
         <Icon v-if="item.youtube" name="logos:youtube-icon" size="30" />
       </div>
       <!-- Post tags -->
-      <TagBadge v-for="(tag, key) in item.tags" :key="key" :tag="tag" />
+      <TagBadge
+        v-for="(tag, index) in item.tags"
+        :key="`${tag}-${index}`"
+        :tag="tag"
+      />
       <!-- Content preview -->
       <main class="flex flex-col gap-3">
         <ContentList v-if="item.content" :list="item.content.slice(0, 2)" />

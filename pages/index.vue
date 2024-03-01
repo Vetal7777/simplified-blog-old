@@ -1,10 +1,14 @@
 <template>
   <div class="flex flex-col gap-20 text-black dark:text-white">
-    <FilterPanel />
+    <FilterPanel @update="onFilter" />
     <div class="flex w-full flex-col gap-3">
       <!-- No-empty list -->
       <template v-if="list.length">
-        <PostPreview v-for="(item, key) in list" :item="item" :key="key" />
+        <PostPreview
+          v-for="(item, index) in list"
+          :item="item"
+          :key="`${item.key}-${index}`"
+        />
       </template>
       <!-- Empty list -->
       <div v-else class="w-full text-center text-white">Empty list</div>
@@ -14,8 +18,13 @@
 
 <script setup lang="ts">
 import { useBlogStore } from '~/stores/blog'
+import type { FilterData } from '~/types'
 
 const blogStore = useBlogStore()
 
 const { list } = storeToRefs(blogStore)
+
+const onFilter = (data: FilterData) => {
+  console.log('filter', data)
+}
 </script>

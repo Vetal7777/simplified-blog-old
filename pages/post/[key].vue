@@ -7,7 +7,11 @@
           {{ state.title }}
         </div>
         <DateLabel :date="state.createDate" />
-        <TagBadge v-for="(tag, key) in state.tags" :tag="tag" :key="key" />
+        <TagBadge
+          v-for="(tag, index) in state.tags"
+          :tag="tag"
+          :key="`${tag}-${index}`"
+        />
       </div>
       <!-- Header edit button -->
       <PostController

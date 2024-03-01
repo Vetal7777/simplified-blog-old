@@ -3,12 +3,17 @@
     <BaseInput
       class="max-w-full"
       top-left-label="Search"
-      v-model="search"
+      v-model="state.content"
       clear-button
+      @input="$emit('update', state)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-const search = ref('')
+import { INIT_FILTER_DATA } from '~/constants/filter'
+
+defineEmits(['update'])
+
+const state = ref(INIT_FILTER_DATA)
 </script>

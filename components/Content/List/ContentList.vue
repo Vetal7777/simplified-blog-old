@@ -1,9 +1,10 @@
 <template>
   <div class="flex flex-col gap-2">
-    <template v-for="(item, key) in list" :key="key">
+    <template v-for="(item, index) in list">
       <!-- Heading -->
       <ContentHeading
         v-if="item.target === ContentTarget.heading"
+        :key="`${item.target}-${index}`"
         v-model="item.children"
         class="container"
         :children="item.children"
@@ -13,6 +14,7 @@
       <!-- Simple text -->
       <ContentSimpleText
         v-if="item.target === ContentTarget.simpleText"
+        :key="`${item.target}-${index}`"
         v-model="item.children"
         class="container"
         :children="item.children"
@@ -21,6 +23,7 @@
       <!-- Code -->
       <ContentCode
         v-if="item.target === ContentTarget.code"
+        :key="`${item.target}-${index}`"
         v-model="item.children"
         class="container"
         :children="item.children"
