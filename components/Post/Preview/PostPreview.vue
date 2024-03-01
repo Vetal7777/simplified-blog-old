@@ -40,14 +40,14 @@ const router = useRouter()
 const userStore = useUserStore()
 const blogStore = useBlogStore()
 
-const { isAdmin, isAuth } = storeToRefs(userStore)
+const { isAdmin } = storeToRefs(userStore)
 
 const { deletePost } = blogStore
 
 const navigateToPostPage = () => {
   router.push({ name: RouteName.post, params: { key: item.key } })
 }
-const showDeleteBtn = computed(() => isAuth.value && isAdmin.value)
+const showDeleteBtn = computed(() => isAdmin.value)
 </script>
 
 <style lang="scss" scoped>
