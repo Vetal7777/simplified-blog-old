@@ -8,7 +8,7 @@
         v-model="item.children"
         class="container"
         :children="item.children"
-        :link="item.link"
+        :link="preview ? undefined : item.link"
         @remove="$emit('remove-content-item', item.id)"
       />
       <!-- Simple text -->
@@ -39,7 +39,9 @@ import { ContentTarget } from '~/constants/blog'
 import { useAppStore } from '~/stores/app'
 import type { ContentListProps } from './types'
 
-defineProps<ContentListProps>()
+withDefaults(defineProps<ContentListProps>(), {
+  preview: false
+})
 
 const appStore = useAppStore()
 

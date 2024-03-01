@@ -22,7 +22,11 @@
       />
       <!-- Content preview -->
       <main class="flex flex-col gap-3">
-        <ContentList v-if="item.content" :list="item.content.slice(0, 2)" />
+        <ContentList
+          v-if="item.content"
+          preview
+          :list="item.content.slice(0, 2)"
+        />
       </main>
     </div>
     <BaseDeleteButton
