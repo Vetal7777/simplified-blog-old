@@ -1,5 +1,9 @@
 export enum PostTag {
-  js = 'JavaScript'
+  js = 'JavaScript',
+  ts = 'TypeScript',
+  vue = 'Vue',
+  react = 'React',
+  service = 'Service'
 }
 
 export enum ContentTarget {
