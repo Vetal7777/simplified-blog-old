@@ -11,3 +11,5 @@ export enum BaseHeadingSize {
   md = 'md',
   lg = 'lg'
 }
+
+export enum AppTask {}

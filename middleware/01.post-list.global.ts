@@ -12,7 +12,6 @@ export default defineNuxtRouteMiddleware(() => {
 
     if (allPosts.length) {
       list.value = allPosts
-      console.log('all-list')
     }
   }
 })

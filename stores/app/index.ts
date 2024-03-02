@@ -1,6 +1,7 @@
 export const useAppStore = defineStore('app', () => {
   const editMode = ref(false)
-  const isLoading = ref(false)
+  const tasks = ref([])
+  const isLoading = computed(() => Boolean(tasks.value.length))
 
-  return { editMode, isLoading }
+  return { editMode, isLoading, tasks }
 })
