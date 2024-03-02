@@ -1,13 +1,13 @@
 <template>
-  <label class="form-control w-full">
+  <label class="du-form-control w-full">
     <!-- Top labeles container -->
-    <div v-if="showTobLabel" class="label relative">
+    <div v-if="showTobLabel" class="du-label relative">
       <!-- Left label -->
-      <span v-if="topLeftLabel" class="label-text absolute left-0">
+      <span v-if="topLeftLabel" class="du-label-text absolute left-0">
         {{ topLeftLabel }}
       </span>
       <!-- Right lebel -->
-      <span v-if="topRightLabel" class="label-text-alt absolute right-0">
+      <span v-if="topRightLabel" class="du-label-text-alt absolute right-0">
         {{ topRightLabel }}
       </span>
     </div>
@@ -18,7 +18,7 @@
         v-model="model"
         type="text"
         :placeholder="placeholder"
-        class="input input-bordered my-2 w-full max-w-full"
+        class="du-input du-input-bordered my-2 w-full max-w-full"
       />
       <!-- Clear button -->
       <button
@@ -26,17 +26,17 @@
         class="absolute right-3 top-0 flex h-full items-center justify-center outline-none"
         @click="clearModel"
       >
-        <Icon name="vaadin:close" class="text-base-dark-gray dark:text-white" />
+        <Icon name="vaadin:close" class="text-main-2 dark:text-white" />
       </button>
     </div>
     <!-- Bottom labeles -->
-    <div v-if="showBottomLabel" class="label relative">
+    <div v-if="showBottomLabel" class="du-label relative">
       <!-- Left label -->
-      <span v-if="bottomLeftLabel" class="label-text-alt absolute left-0">
+      <span v-if="bottomLeftLabel" class="du-label-text-alt absolute left-0">
         {{ bottomLeftLabel }}
       </span>
       <!-- Right label -->
-      <span v-if="bottomRightLabel" class="label-text-alt absolute right-0">
+      <span v-if="bottomRightLabel" class="du-label-text-alt absolute right-0">
         {{ bottomRightLabel }}
       </span>
     </div>
@@ -66,4 +66,3 @@ const showCloseButton = computed(() => model.value && props.clearButton)
 
 const clearModel = () => emit('update:modelValue', EMPTY_STRING)
 </script>
-~/constants/global

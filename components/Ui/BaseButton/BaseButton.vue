@@ -1,10 +1,10 @@
 <template>
   <button
-    class="btn"
+    class="du-btn"
     :class="{
-      'btn-sm': size === BaseButtonSize.sm,
-      'btn-lg': size === BaseButtonSize.lg,
-      'btn-xs': size === BaseButtonSize.xs
+      'du-btn-sm': size === BaseButtonSize.sm,
+      'du-btn-lg': size === BaseButtonSize.lg,
+      'du-btn-xs': size === BaseButtonSize.xs
     }"
     @click="$emit('click')"
   >

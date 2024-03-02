@@ -5,7 +5,7 @@
     @remove="$emit('remove')"
   >
     <!-- Show children -->
-    <div class="mockup-code" v-show="!editProcess">
+    <div class="du-mockup-code" v-show="!editProcess">
       <pre>
         <div 
           ref="container" class="pl-19"
@@ -13,7 +13,7 @@
       </pre>
     </div>
     <!-- Change children -->
-    <div class="mockup-code" v-show="editProcess">
+    <div class="du-mockup-code" v-show="editProcess">
       <pre>
         <textarea
         :style="{height:`${containerHeight}px`}"

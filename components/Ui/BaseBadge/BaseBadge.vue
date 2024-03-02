@@ -1,5 +1,5 @@
 <template>
-  <div class="badge badge-outline">
+  <div class="du-badge du-badge-outline">
     {{ value }}
   </div>
 </template>

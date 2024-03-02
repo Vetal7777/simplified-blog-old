@@ -1,7 +1,7 @@
 <template>
   <div class="absolute right-4 top-0 hidden h-full items-center justify-center">
     <button
-      class="btn btn-circle h-6 min-h-6 w-6 bg-red-500"
+      class="du-btn du-btn-circle bg-red h-6 min-h-6 w-6"
       @click.stop="$emit('remove')"
     >
       <Icon name="tabler:trash-filled" color="white" />

@@ -1,6 +1,6 @@
 <template>
-  <div class="card w-full bg-base-100 shadow-xl">
-    <div class="card-body flex flex-col gap-4">
+  <div class="du-card w-full bg-base-100 shadow-xl">
+    <div class="du-card-body flex flex-col gap-4">
       <!-- Post Title -->
       <BaseHeading
         class="cursor-pointer hover:underline"
@@ -60,7 +60,7 @@ const showDeleteBtn = computed(() => isAdmin.value)
 </script>
 
 <style lang="scss" scoped>
-.card:hover .delete-button {
+.du-card:hover .delete-button {
   @apply flex animate-slide-in;
 }
 </style>
