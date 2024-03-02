@@ -6,6 +6,7 @@ import type { PostItem } from './types'
 export const useBlogStore = defineStore('blog', () => {
   const list = ref<PostItem[]>([
     {
+      id: uuid(),
       title: '8 NEW JavaScript 2024 Features',
       key: '8-new-js-feautures-2024',
       youtube: 'https://www.youtube.com/embed/duNEnLUxie8?si=6MRF3bUz4t9x4mD3',
@@ -33,14 +34,14 @@ export const useBlogStore = defineStore('blog', () => {
     }
   ])
 
-  const getPostByKey = (currentKey: string | string[]): PostItem | undefined =>
-    list.value.find(({ key }) => currentKey === key)
+  const getPostByKey = (currentKey: string | string[]): PostItem | null =>
+    list.value.find(({ key }) => currentKey === key) ?? null
 
   const updatePost = (post: PostItem) => {
-    list.value = list.value.map((item) => (item.key === post.key ? post : item))
+    list.value = list.value.map((item) => (item.id === post.id ? post : item))
   }
-  const deletePost = (post: PostItem) => {
-    list.value = list.value.filter((item) => item.key !== post.key)
+  const deletePost = (id: PostItem['id']) => {
+    list.value = list.value.filter((item) => item.id !== id)
   }
 
   return { list, getPostByKey, updatePost, deletePost }

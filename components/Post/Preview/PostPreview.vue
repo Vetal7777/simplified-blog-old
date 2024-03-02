@@ -29,7 +29,7 @@
     <BaseDeleteButton
       v-if="showDeleteBtn"
       class="delete-button"
-      @remove="deletePost(item)"
+      @remove="deletePost(item.id)"
     />
   </div>
 </template>

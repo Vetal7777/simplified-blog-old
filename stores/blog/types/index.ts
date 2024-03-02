@@ -1,6 +1,7 @@
 import type { ContentTarget, PostTag } from '~/constants/blog'
 
 export type PostItem = {
+  id: string
   title: string
   key: string
   youtube?: string
