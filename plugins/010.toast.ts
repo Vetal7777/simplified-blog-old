@@ -1,7 +1,7 @@
 import { ToastType } from '~/constants/toast'
-import type { ToastState } from './types'
+import type { ToastState } from '~/types/ToastState'
 
-export const useToastStore = defineStore('toast', () => {
+export default defineNuxtPlugin(() => {
   const state = ref<ToastState>({
     message: null,
     show: false,
@@ -23,7 +23,11 @@ export const useToastStore = defineStore('toast', () => {
   }
 
   return {
-    state,
-    showToast
+    provide: {
+      toast: {
+        state,
+        showToast
+      }
+    }
   }
 })

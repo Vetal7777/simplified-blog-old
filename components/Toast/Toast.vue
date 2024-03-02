@@ -22,10 +22,10 @@
 
 <script setup lang="ts">
 import { ToastType } from '~/constants/toast'
-import { useToastStore } from '~/stores/toast'
 
-const toastStore = useToastStore()
-const { state } = storeToRefs(toastStore)
+const { $toast } = useNuxtApp()
+
+const state = computed(() => $toast.state.value)
 </script>
 
 <style scoped lang="scss">
