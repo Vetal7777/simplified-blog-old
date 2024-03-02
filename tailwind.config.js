@@ -9,6 +9,14 @@ module.exports = {
     './error.vue'
   ],
   theme: {
+    colors: {
+      'main-1': 'rgb(133, 133, 133)',
+      'main-2': 'rgb(59, 59, 59)',
+      'primary-1': '#03FF00',
+      white: '#FFFF',
+      red: 'rgb(239 68 68)',
+      black: 'rgb(0 0 0)'
+    },
     extend: {
       animation: {
         'slide-in': 'slideIn 0.3s forwards'
@@ -19,23 +27,20 @@ module.exports = {
           '100%': { transform: 'translateX(0px)' }
         }
       },
-      colors: {
-        'base-dark-gray': 'rgb(59, 59, 59)',
-        'base-light-gray': 'rgb(133, 133, 133)',
-        'base-light-black': '#161a1d',
-        lime: '#00FF00'
-      },
       lineHeight: {
         '85px': '85px'
       },
       margin: {
-        18: '72px',
-        4.75: '19px'
+        4.75: '19px',
+        18: '72px'
       },
       padding: {
         19: '76px'
       }
     }
   },
-  plugins: [require('daisyui')]
+  plugins: [require('daisyui')],
+  daisyui: {
+    prefix: 'du-'
+  }
 }

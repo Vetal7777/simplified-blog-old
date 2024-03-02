@@ -4,16 +4,16 @@
     @click="onFocus"
     @remove="$emit('remove')"
   >
-    <!-- Show children -->
-    <div class="mockup-code" v-show="!editProcess">
+    <!-- Show value -->
+    <div class="du-mockup-code" v-show="!editProcess">
       <pre>
         <div 
           ref="container" class="pl-19"
-        >{{ children }}</div>
+        >{{ value }}</div>
       </pre>
     </div>
-    <!-- Change children -->
-    <div class="mockup-code" v-show="editProcess">
+    <!-- Change value -->
+    <div class="du-mockup-code" v-show="editProcess">
       <pre>
         <textarea
         :style="{height:`${containerHeight}px`}"
@@ -50,7 +50,7 @@ const containerHeight = computed(() => {
   } else return 0
 })
 const model = computed({
-  get: () => props.children,
+  get: () => props.value,
   set: (value) => emit('update:modelValue', value)
 })
 

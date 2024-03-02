@@ -3,9 +3,11 @@
     <Transition name="slide-fade">
       <div
         v-if="editMode"
-        class="card fixed right-4 top-1/2 z-10 w-fit bg-white shadow-xl dark:bg-neutral"
+        class="du-card fixed right-4 top-1/2 z-10 w-fit bg-white shadow-xl dark:bg-neutral"
       >
-        <div class="card-body flex flex-row gap-3 text-black dark:text-white">
+        <div
+          class="du-card-body flex flex-row gap-3 text-black dark:text-white"
+        >
           <button class="w-min transition-all hover:scale-105 hover:opacity-80">
             <Icon name="bx:heading" size="20" />
           </button>

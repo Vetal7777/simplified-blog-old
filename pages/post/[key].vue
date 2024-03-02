@@ -3,15 +3,9 @@
     <header class="relative flex">
       <!-- Header content -->
       <div class="mr-48 flex flex-col gap-2">
-        <div class="text-4xl font-black text-black dark:text-white">
-          {{ state.title }}
-        </div>
-        <DateLabel :date="state.createDate" />
-        <TagBadge
-          v-for="(tag, index) in state.tags"
-          :tag="tag"
-          :key="`${tag}-${index}`"
-        />
+        <BaseHeading :value="state.title" :size="BaseHeadingSize.lg" />
+        <BaseDateLabel :value="state.createDate" />
+        <BaseBadge v-for="tag in state.tags" :value="tag" :key="tag" />
       </div>
       <!-- Header edit button -->
       <PostController
@@ -38,6 +32,7 @@
 <script setup lang="ts">
 import { useBlogStore } from '@/stores/blog'
 import { useArray } from '~/composables/useArray'
+import { BaseHeadingSize } from '~/constants/global'
 import { useAppStore } from '~/stores/app'
 import type { Content, PostItem } from '~/stores/blog/types'
 import { useUserStore } from '~/stores/user'

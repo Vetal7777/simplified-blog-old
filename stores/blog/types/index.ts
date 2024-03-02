@@ -1,9 +1,7 @@
-import type { ContentCodeProps } from '~/components/Content/Code/types'
-import type { ContentHeadingProps } from '~/components/Content/Heading/types'
-import type { ContentSimpleTextProps } from '~/components/Content/SimpleText/types'
 import type { ContentTarget, PostTag } from '~/constants/blog'
 
 export type PostItem = {
+  id: string
   title: string
   key: string
   youtube?: string
@@ -15,21 +13,20 @@ export type PostItem = {
 export type Heading = {
   id: string
   target: ContentTarget.heading
-} & PickChildren<ContentHeadingProps> &
-  PickLink<ContentHeadingProps>
+  value: string
+  link?: string
+}
 
 export type SimpleText = {
   id: string
   target: ContentTarget.simpleText
-} & PickChildren<ContentSimpleTextProps>
+  value: string
+}
 
 export type Code = {
   id: string
   target: ContentTarget.code
-} & PickChildren<ContentCodeProps>
-
-export type PickChildren<T extends { children: unknown }> = Pick<T, 'children'>
-
-export type PickLink<T extends { link?: unknown }> = Pick<T, 'link'>
+  value: string
+}
 
 export type Content = Heading | SimpleText | Code

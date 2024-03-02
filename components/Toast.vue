@@ -1,15 +1,14 @@
 <template>
   <Teleport to="body">
     <Transition>
-      <div class="toast fixed bottom-8 right-8 z-20" v-if="state.show">
+      <div class="du-toast fixed bottom-8 right-8 z-20" v-if="state.show">
         <div
           :class="[
-            'alert ',
+            'du-alert ',
             {
-              'alert-info': state.type === ToastType.info,
-              'alert-success': state.type === ToastType.success,
-              'border-red-500 bg-red-600 text-black':
-                state.type === ToastType.error
+              'du-alert-info': state.type === ToastType.info,
+              'du-alert-success': state.type === ToastType.success,
+              'border-red bg-red text-black': state.type === ToastType.error
             }
           ]"
         >

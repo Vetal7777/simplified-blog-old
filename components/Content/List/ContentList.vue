@@ -5,9 +5,9 @@
       <ContentHeading
         v-if="item.target === ContentTarget.heading"
         :key="`${item.target}-${index}`"
-        v-model="item.children"
+        v-model="item.value"
         class="container"
-        :children="item.children"
+        :value="item.value"
         :link="preview ? undefined : item.link"
         @remove="$emit('remove-content-item', item.id)"
       />
@@ -15,18 +15,18 @@
       <ContentSimpleText
         v-if="item.target === ContentTarget.simpleText"
         :key="`${item.target}-${index}`"
-        v-model="item.children"
+        v-model="item.value"
         class="container"
-        :children="item.children"
+        :value="item.value"
         @remove="$emit('remove-content-item', item.id)"
       />
       <!-- Code -->
       <ContentCode
         v-if="item.target === ContentTarget.code"
         :key="`${item.target}-${index}`"
-        v-model="item.children"
+        v-model="item.value"
         class="container"
-        :children="item.children"
+        :value="item.value"
         @remove="$emit('remove-content-item', item.id)"
       />
     </template>
