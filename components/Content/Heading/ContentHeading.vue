@@ -8,24 +8,8 @@
       class="w-full bg-transparent text-3xl font-black text-black outline-none dark:text-white"
       @blur="editProcess = false"
     />
-    <!-- Show children -->
-    <temaplate v-else>
-      <!-- If Link -->
-      <a
-        v-if="link"
-        :href="link"
-        class="break-all text-3xl font-black text-black hover:underline dark:text-white"
-      >
-        {{ children }}
-      </a>
-      <!-- Simple heading -->
-      <div
-        v-else
-        class="break-all text-3xl font-black text-black dark:text-white"
-      >
-        {{ children }}
-      </div>
-    </temaplate>
+    <!-- Show heading -->
+    <BaseHeading v-else :link="link" :value="children" />
   </ContentContainer>
 </template>
 

@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import BaseDeleteButton from '~/components/Ui/BaseDeleteButton.vue'
 import { useAppStore } from '~/stores/app'
 import type { ContentContainerProps } from './types'
 

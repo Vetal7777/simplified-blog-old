@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '~/components/Ui/BaseButton/BaseButton.vue'
 import { RouteName } from '~/constants/router'
 
 const router = useRouter()

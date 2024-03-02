@@ -2,12 +2,12 @@
   <div class="card w-full bg-base-100 shadow-xl">
     <div class="card-body flex flex-col gap-4">
       <!-- Post Title -->
-      <a
-        class="cursor-pointer text-4xl font-black text-black hover:underline dark:text-white"
+      <BaseHeading
+        class="cursor-pointer hover:underline"
+        :value="item.title"
+        :size="BaseHeadingSize.lg"
         @click="navigateToPostPage"
-      >
-        {{ item.title }}
-      </a>
+      />
       <div class="flex items-center justify-between gap-3">
         <!-- Post Date -->
         <BaseDateLabel :value="item.createDate" />
@@ -38,9 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseBadge from '~/components/Ui/BaseBadge/BaseBadge.vue'
-import BaseDateLabel from '~/components/Ui/BaseDateLabel/BaseDateLabel.vue'
-import BaseDeleteButton from '~/components/Ui/BaseDeleteButton.vue'
+import { BaseHeadingSize } from '~/constants/global'
 import { RouteName } from '~/constants/router'
 import { useBlogStore } from '~/stores/blog'
 import { useUserStore } from '~/stores/user'

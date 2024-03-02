@@ -1,6 +1,6 @@
-import type { BaseButtonSizeValue } from '~/constants/global'
+import type { BaseButtonSize } from '~/constants/global'
 
 export type BaseButtonProps = {
   title: string
-  size?: BaseButtonSizeValue
+  size?: BaseButtonSize
 }
