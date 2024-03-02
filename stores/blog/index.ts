@@ -15,20 +15,19 @@ export const useBlogStore = defineStore('blog', () => {
         {
           id: uuid(),
           target: ContentTarget.heading,
-          children: 'toSorted()',
+          value: 'toSorted()',
           link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted'
         },
         {
           id: uuid(),
           target: ContentTarget.simpleText,
-          children:
+          value:
             'The toSorted() method of Array instances is the copying version of the sort() method. It returns a new array with the elements sorted in ascending order.'
         },
         {
           id: uuid(),
           target: ContentTarget.code,
-          children:
-            'arr.sort()\n\n//same but without mutatuions\narr.toSorted()'
+          value: 'arr.sort()\n\n//same but without mutatuions\narr.toSorted()'
         }
       ]
     }

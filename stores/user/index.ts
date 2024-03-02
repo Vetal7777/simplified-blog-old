@@ -1,5 +1,5 @@
 export const useUserStore = defineStore('user', () => {
-  const isAdmin = ref(true)
+  const isAdmin = ref(false)
 
   return { isAdmin }
 })

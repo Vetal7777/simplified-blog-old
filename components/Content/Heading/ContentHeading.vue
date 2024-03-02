@@ -1,6 +1,6 @@
 <template>
   <ContentContainer :editProcess="editProcess" @click="onFocus">
-    <!-- Change children -->
+    <!-- Change value -->
     <input
       v-if="editProcess"
       v-model="model"
@@ -9,7 +9,7 @@
       @blur="editProcess = false"
     />
     <!-- Show heading -->
-    <BaseHeading v-else :link="link" :value="children" />
+    <BaseHeading v-else :link="link" :value="value" />
   </ContentContainer>
 </template>
 
@@ -28,7 +28,7 @@ const editProcess = ref(false)
 const target = ref(null)
 
 const model = computed({
-  get: () => props.children,
+  get: () => props.value,
   set: (value) => emit('update:modelValue', value)
 })
 

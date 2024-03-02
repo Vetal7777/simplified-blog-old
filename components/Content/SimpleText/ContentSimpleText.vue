@@ -1,7 +1,7 @@
 <template>
   <ContentContainer :editProcess="editProcess" @click="onFocus">
     <div v-if="!editProcess" class="pb-2 text-black dark:text-white">
-      {{ children }}
+      {{ value }}
     </div>
     <textarea
       v-else
@@ -28,7 +28,7 @@ const editProcess = ref(false)
 const target = ref(null)
 
 const model = computed({
-  get: () => props.children,
+  get: () => props.value,
   set: (value) => emit('update:modelValue', value)
 })
 
