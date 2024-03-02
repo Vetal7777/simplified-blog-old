@@ -2,7 +2,6 @@
   <button
     class="btn"
     :class="{
-      '': size === BaseButtonSize.md,
       'btn-sm': size === BaseButtonSize.sm,
       'btn-lg': size === BaseButtonSize.lg,
       'btn-xs': size === BaseButtonSize.xs
@@ -17,7 +16,5 @@
 import { BaseButtonSize } from '~/constants/global'
 import type { BaseButtonProps } from './types'
 
-withDefaults(defineProps<BaseButtonProps>(), {
-  size: BaseButtonSize.md
-})
+defineProps<BaseButtonProps>()
 </script>
