@@ -1,11 +1,11 @@
 <template>
   <div class="badge badge-outline">
-    {{ tag }}
+    {{ value }}
   </div>
 </template>
 
 <script setup lang="ts">
-import type { TagBadgeProps } from './types'
+import type { BaseBadgeProps } from './types'
 
-defineProps<TagBadgeProps>()
+defineProps<BaseBadgeProps>()
 </script>

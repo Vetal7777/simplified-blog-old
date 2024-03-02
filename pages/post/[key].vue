@@ -6,10 +6,10 @@
         <div class="text-4xl font-black text-black dark:text-white">
           {{ state.title }}
         </div>
-        <DateLabel :date="state.createDate" />
-        <TagBadge
+        <BaseDateLabel :value="state.createDate" />
+        <BaseBadge
           v-for="(tag, index) in state.tags"
-          :tag="tag"
+          :value="tag"
           :key="`${tag}-${index}`"
         />
       </div>
@@ -37,6 +37,8 @@
 
 <script setup lang="ts">
 import { useBlogStore } from '@/stores/blog'
+import BaseBadge from '~/components/Ui/BaseBadge/BaseBadge.vue'
+import BaseDateLabel from '~/components/Ui/BaseDateLabel/BaseDateLabel.vue'
 import { useArray } from '~/composables/useArray'
 import { useAppStore } from '~/stores/app'
 import type { Content, PostItem } from '~/stores/blog/types'
@@ -99,3 +101,4 @@ definePageMeta({
   middleware: ['post-server']
 })
 </script>
+~/composables/useArray/useArray

@@ -10,15 +10,15 @@
       </a>
       <div class="flex items-center justify-between gap-3">
         <!-- Post Date -->
-        <DateLabel :date="item.createDate" />
+        <BaseDateLabel :value="item.createDate" />
         <!-- YouTube flag -->
         <Icon v-if="item.youtube" name="logos:youtube-icon" size="30" />
       </div>
       <!-- Post tags -->
-      <TagBadge
+      <BaseBadge
         v-for="(tag, index) in item.tags"
         :key="`${tag}-${index}`"
-        :tag="tag"
+        :value="tag"
       />
       <!-- Content preview -->
       <main class="flex flex-col gap-3">
@@ -38,6 +38,9 @@
 </template>
 
 <script setup lang="ts">
+import BaseBadge from '~/components/Ui/BaseBadge/BaseBadge.vue'
+import BaseDateLabel from '~/components/Ui/BaseDateLabel/BaseDateLabel.vue'
+import BaseDeleteButton from '~/components/Ui/BaseDeleteButton.vue'
 import { RouteName } from '~/constants/router'
 import { useBlogStore } from '~/stores/blog'
 import { useUserStore } from '~/stores/user'

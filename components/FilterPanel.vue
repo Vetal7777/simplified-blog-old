@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import { INIT_FILTER_DATA } from '~/constants/filter'
+import BaseInput from './Ui/BaseInput/BaseInput.vue'
 
 defineEmits(['update'])
 

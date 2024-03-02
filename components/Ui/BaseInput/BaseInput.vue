@@ -44,18 +44,13 @@
 </template>
 
 <script setup lang="ts">
-import { EMPTY_STRING } from '@/constants'
+import { EMPTY_STRING } from '@/constants/global'
 import type { BaseInputProps } from './types'
 
 const emit = defineEmits()
 
 const props = withDefaults(defineProps<BaseInputProps>(), {
-  topLeftLabel: undefined,
-  bottomLeftLabel: undefined,
-  topRightLabel: undefined,
-  bottomRightLabel: undefined,
   modelValue: EMPTY_STRING,
-  clearButton: undefined,
   placeholder: EMPTY_STRING
 })
 
@@ -71,3 +66,4 @@ const showCloseButton = computed(() => model.value && props.clearButton)
 
 const clearModel = () => emit('update:modelValue', EMPTY_STRING)
 </script>
+~/constants/global
