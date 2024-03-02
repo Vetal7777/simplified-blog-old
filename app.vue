@@ -2,5 +2,6 @@
   <NuxtLayout>
     <NuxtPage />
     <Toast />
+    <LoadingSpinner />
   </NuxtLayout>
 </template>
