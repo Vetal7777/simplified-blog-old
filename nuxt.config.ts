@@ -16,13 +16,13 @@ export default defineNuxtConfig({
   ],
   vuefire: {
     config: {
-      apiKey: 'AIzaSyDtKDEythOIke4meMEFJPpQhlgxFZN9Wc4',
-      authDomain: 'simplified-blog-85da7.firebaseapp.com',
-      projectId: 'simplified-blog-85da7',
-      storageBucket: 'simplified-blog-85da7.appspot.com',
-      messagingSenderId: '382785746458',
-      appId: '1:382785746458:web:367553f5754ab3d4da43a3',
-      measurementId: 'G-GDMW7KRXMT'
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.FIREBASE_APP_ID,
+      measurementId: process.env.FIREBASE_MEASUREMENT_ID
     }
   }
 })
