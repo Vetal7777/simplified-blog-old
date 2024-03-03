@@ -6,6 +6,7 @@
       'du-btn-lg': size === BaseButtonSize.lg,
       'du-btn-xs': size === BaseButtonSize.xs
     }"
+    :disabled="disabled"
     @click="$emit('click')"
   >
     {{ title }}
@@ -16,6 +17,8 @@
 import { BaseButtonSize } from '~/constants/global'
 import type { BaseButtonProps } from './types/BaseButtonProps'
 
-defineProps<BaseButtonProps>()
+withDefaults(defineProps<BaseButtonProps>(), {
+  disabled: false
+})
 defineEmits(['click'])
 </script>
