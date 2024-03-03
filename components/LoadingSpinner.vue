@@ -3,7 +3,7 @@
     <Transition>
       <div
         v-if="isLoading"
-        class="dark:bg-main-2 fixed left-0 top-0 z-20 flex h-screen w-screen items-center justify-center bg-white"
+        class="fixed left-0 top-0 z-20 flex h-screen w-screen items-center justify-center bg-white dark:bg-main-2"
       >
         <span class="du-loading du-loading-spinner du-loading-lg" />
       </div>
