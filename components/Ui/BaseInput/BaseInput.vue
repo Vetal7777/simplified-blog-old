@@ -103,9 +103,7 @@ const [validateValue, validateAttrs] = defineField(props.name, {
 
 const modelType = ref<BaseInputType>(props.type)
 
-const errorMessage = computed<string | null>(
-  () => errors.value[props.name] ?? null
-)
+const errorMessage = computed<string>(() => errors.value[props.name] ?? '')
 const inputSizeClass = computed(() => ({
   'du-input-xs': inputSizeData.value.xs,
   'du-input-sm': inputSizeData.value.sm,
@@ -160,7 +158,7 @@ const showCloseButton = computed(
 
 const clearModel = () => emit('update:modelValue', EMPTY_STRING)
 const onError = () => {
-  if (props.validate && errorMessage.value) {
+  if (props.validate) {
     emit('error', errorMessage.value)
   }
 }
