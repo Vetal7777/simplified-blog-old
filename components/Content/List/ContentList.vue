@@ -36,14 +36,9 @@
 
 <script setup lang="ts">
 import { ContentTarget } from '~/constants/blog'
-import { useAppStore } from '~/stores/app'
-import type { ContentListProps } from './types'
+import type { ContentListProps } from './types/ContentListProps'
 
 withDefaults(defineProps<ContentListProps>(), {
   preview: false
 })
-
-const appStore = useAppStore()
-
-const { editMode } = storeToRefs(appStore)
 </script>

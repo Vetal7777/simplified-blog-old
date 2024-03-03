@@ -1,4 +1,3 @@
-import type { YouTubeIframe } from '#build/components';
 <template>
   <iframe
     :title="title"
@@ -11,7 +10,7 @@ import type { YouTubeIframe } from '#build/components';
 </template>
 
 <script setup lang="ts">
-import type { YouTubeIframeProps } from './types'
+import type { YouTubeIframeProps } from './types/YouTubeIframeProps'
 
 defineProps<YouTubeIframeProps>()
 </script>

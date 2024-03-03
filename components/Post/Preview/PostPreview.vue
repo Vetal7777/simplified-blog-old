@@ -39,7 +39,7 @@ import { BaseHeadingSize } from '~/constants/global'
 import { RouteName } from '~/constants/router'
 import { useBlogStore } from '~/stores/blog'
 import { useUserStore } from '~/stores/user'
-import type { PostPreviewProps } from './types'
+import type { PostPreviewProps } from './types/PostPreviewProps'
 
 const { item } = defineProps<PostPreviewProps>()
 const router = useRouter()

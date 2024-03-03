@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { useAppStore } from '~/stores/app'
-import type { ContentContainerProps } from './types'
+import type { ContentContainerProps } from './types/ContentContainerProps'
 
 defineProps<ContentContainerProps>()
 defineEmits(['remove'])
