@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { useAppStore } from '~/stores/app'
-import type { ContentHeadingProps } from './types'
+import type { ContentHeadingProps } from './types/ContentHeadingProps'
 
 const props = defineProps<ContentHeadingProps>()
 const emit = defineEmits(['update:modelValue'])

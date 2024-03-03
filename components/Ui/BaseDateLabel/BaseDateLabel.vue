@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BaseDateLabelProps } from './types'
+import type { BaseDateLabelProps } from './types/BaseDateLabelProps'
 
 defineProps<BaseDateLabelProps>()
 </script>

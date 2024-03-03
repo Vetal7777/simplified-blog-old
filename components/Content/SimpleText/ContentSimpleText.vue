@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { useAppStore } from '~/stores/app'
-import type { ContentSimpleTextProps } from './types'
+import type { ContentSimpleTextProps } from './types/ContentSimpleTextProps'
 
 const props = defineProps<ContentSimpleTextProps>()
 const emit = defineEmits(['update:modelValue'])

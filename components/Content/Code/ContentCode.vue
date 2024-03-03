@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { useAppStore } from '~/stores/app'
-import type { ContentCodeProps } from './types'
+import type { ContentCodeProps } from './types/ContentCodeProps'
 
 const props = defineProps<ContentCodeProps>()
 const emit = defineEmits(['update:modelValue', 'remove'])
