@@ -1620,6 +1620,15 @@
     hookable "^5.5.3"
     unhead "1.8.10"
 
+"@vee-validate/zod@^4.12.5":
+  version "4.12.5"
+  resolved "https://registry.yarnpkg.com/@vee-validate/zod/-/zod-4.12.5.tgz#96c66c3910dddc6458ea8c8a01ec2530e6534480"
+  integrity sha512-hUjvXaa4HHvlZeosucViIDOUikQmyKaXXuL6P8LR1ETOUrBV6ntTsafJGvRYtwhXosoLYuolUD6Km737okK4Gg==
+  dependencies:
+    type-fest "^4.8.3"
+    vee-validate "4.12.5"
+    zod "^3.22.4"
+
 "@vercel/nft@^0.24.3":
   version "0.24.4"
   resolved "https://registry.yarnpkg.com/@vercel/nft/-/nft-0.24.4.tgz#b8942340c7821e6ff7bdf943b559642dbc9cae78"
@@ -6119,7 +6128,7 @@ validate-npm-package-name@^5.0.0:
   dependencies:
     builtins "^5.0.0"
 
-vee-validate@^4.12.5:
+vee-validate@4.12.5, vee-validate@^4.12.5:
   version "4.12.5"
   resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-4.12.5.tgz#04e1cc3c23fba60ae7e49383cdd40d2ac60477ba"
   integrity sha512-rvaDfLPSLwTk+mf016XWE4drB8yXzOsKXiKHTb9gNXNLTtQSZ0Ww26O0/xbIFQe+n3+u8Wv1Y8uO/aLDX4fxOg==
@@ -6443,3 +6452,8 @@ zip-stream@^5.0.1:
     archiver-utils "^4.0.1"
     compress-commons "^5.0.1"
     readable-stream "^3.6.0"
+
+zod@^3.22.4:
+  version "3.22.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.4.tgz#f31c3a9386f61b1f228af56faa9255e845cf3fff"
+  integrity sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==
