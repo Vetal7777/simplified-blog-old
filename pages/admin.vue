@@ -2,15 +2,24 @@
   <div class="flex h-full flex-1 items-center justify-center">
     <BaseForm title="Admin authentication">
       <template #main>
-        <BaseInput v-model="state.login" top-left-label="Login" />
         <BaseInput
-          v-model="state.password"
+          v-model="state[FormKey.email].value"
+          :name="FormKey.email"
+          top-left-label="Email"
+          :validate="state[FormKey.email].validate"
+          @error="(error) => onError(FormKey.email, error)"
+        />
+        <BaseInput
+          v-model="state[FormKey.password].value"
+          :name="FormKey.password"
           top-left-label="Password"
           :type="BaseInputType.password"
+          :validate="state[FormKey.password].validate"
+          @error="(error) => onError(FormKey.password, error)"
         />
       </template>
       <template #controllbar>
-        <BaseButton title="Sign in" />
+        <BaseButton title="Sign in" :disabled="isError" />
       </template>
     </BaseForm>
   </div>
@@ -18,9 +27,39 @@
 
 <script setup lang="ts">
 import { BaseInputType } from '~/constants/global'
+import { required } from '~/constants/zod-rules'
+import type { ErrorMessage } from '~/types/ErrorMessage'
+import type { FormStateData } from '~/types/FormStateData'
 
-const state = ref({
-  login: '',
-  password: ''
+enum FormKey {
+  email = 'email',
+  password = 'password'
+}
+
+const state = ref<FormStateData>({
+  [FormKey.email]: {
+    value: '',
+    validate: {
+      rules: required.email()
+    },
+    error: ''
+  },
+  [FormKey.password]: {
+    value: '',
+    validate: {
+      rules: required
+    },
+    error: ''
+  }
 })
+
+const isError = computed(() =>
+  Object.values(state.value)
+    .map(({ error, value }) => Boolean(value) && !error)
+    .includes(false)
+)
+
+const onError = (key: FormKey, error: ErrorMessage) => {
+  state.value[key].error = error
+}
 </script>
