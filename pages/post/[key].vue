@@ -33,13 +33,13 @@
 import { useBlogStore } from '@/stores/blog'
 import { useArray } from '~/composables/useArray'
 import { BaseHeadingSize } from '~/constants/global'
+import { useAdminStore } from '~/stores/admin'
 import { useAppStore } from '~/stores/app'
 import type { Content, PostItem } from '~/stores/blog/types'
-import { useUserStore } from '~/stores/user'
 
 const blogStore = useBlogStore()
 const appStore = useAppStore()
-const userStore = useUserStore()
+const userStore = useAdminStore()
 const route = useRoute()
 
 const { deepCopy } = useArray()
@@ -49,9 +49,7 @@ const editContent = ref<Content[] | null>(null)
 const { editMode } = storeToRefs(appStore)
 const { isAdmin } = storeToRefs(userStore)
 
-const state = computed<PostItem | undefined>(() =>
-  getPostByKey(route.params.key)
-)
+const state = computed<PostItem | null>(() => getPostByKey(route.params.key))
 const showController = computed(() => isAdmin.value)
 const onComplete = () => {
   if (state.value && editContent.value) {
@@ -90,7 +88,6 @@ onBeforeUnmount(() => {
 })
 
 definePageMeta({
-  layout: 'article',
   middleware: ['post-server']
 })
 </script>

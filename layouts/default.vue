@@ -1,15 +1,22 @@
 <template>
   <div>
-    <header class="fixed z-10 flex w-full flex-col bg-primary-1 pb-5">
-      <div class="text-9xl font-black leading-85px text-black">Vetal7777</div>
-      <div class="text-right text-4xl font-black leading-3 text-white">
-        simplified Blog
-      </div>
+    <header class="fixed top-0 z-10 flex w-full justify-end bg-primary-1 p-4">
+      <BaseButton title="Home" @click="navigateToHome" />
     </header>
     <main
-      class="mx-auto flex max-h-screen w-screen max-w-4xl translate-y-32 flex-col gap-3 p-5"
+      class="pt-25 mx-auto box-border flex min-h-screen w-screen max-w-4xl flex-col gap-3 p-5"
     >
       <slot />
     </main>
   </div>
 </template>
+
+<script setup lang="ts">
+import { RouteName } from '~/constants/router'
+
+const router = useRouter()
+
+const navigateToHome = () => {
+  router.push({ name: RouteName.home })
+}
+</script>

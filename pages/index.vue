@@ -27,4 +27,8 @@ const { list } = storeToRefs(blogStore)
 const onFilter = (data: FilterData) => {
   console.log('filter', data)
 }
+
+definePageMeta({
+  layout: 'home-page'
+})
 </script>

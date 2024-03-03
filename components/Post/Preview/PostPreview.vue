@@ -38,12 +38,12 @@
 import { BaseHeadingSize } from '~/constants/global'
 import { RouteName } from '~/constants/router'
 import { useBlogStore } from '~/stores/blog'
-import { useUserStore } from '~/stores/user'
+import { useAdminStore } from '~/stores/admin'
 import type { PostPreviewProps } from './types/PostPreviewProps'
 
 const { item } = defineProps<PostPreviewProps>()
 const router = useRouter()
-const userStore = useUserStore()
+const userStore = useAdminStore()
 const blogStore = useBlogStore()
 
 const { isAdmin } = storeToRefs(userStore)
@@ -61,3 +61,4 @@ const showDeleteBtn = computed(() => isAdmin.value)
   @apply flex animate-slide-in;
 }
 </style>
+~/stores/admin
