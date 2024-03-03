@@ -138,7 +138,6 @@ const clearModel = () => emit('update:modelValue', EMPTY_STRING)
 }
 
 .button-shell {
-  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
-  @apply flex items-center gap-2 pl-2;
+  @apply flex items-center gap-2 bg-white pl-2 dark:bg-main-2;
 }
 </style>
