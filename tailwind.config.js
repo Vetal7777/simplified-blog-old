@@ -35,7 +35,8 @@ module.exports = {
         18: '72px'
       },
       padding: {
-        19: '76px'
+        19: '76px',
+        25: '100px'
       }
     }
   },
