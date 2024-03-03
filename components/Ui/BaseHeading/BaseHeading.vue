@@ -16,7 +16,9 @@
 
 <script setup lang="ts">
 import { BaseHeadingSize } from '@/constants/global'
-import type { BaseHeadingProps } from './types'
+import type { BaseHeadingProps } from './types/BaseHeadingProps'
+
+defineEmits(['click'])
 
 const props = withDefaults(defineProps<BaseHeadingProps>(), {
   size: BaseHeadingSize.md

@@ -14,7 +14,8 @@
 
 <script setup lang="ts">
 import { BaseButtonSize } from '~/constants/global'
-import type { BaseButtonProps } from './types'
+import type { BaseButtonProps } from './types/BaseButtonProps'
 
 defineProps<BaseButtonProps>()
+defineEmits(['click'])
 </script>

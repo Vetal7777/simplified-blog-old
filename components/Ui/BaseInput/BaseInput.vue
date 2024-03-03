@@ -45,9 +45,9 @@
 
 <script setup lang="ts">
 import { EMPTY_STRING } from '@/constants/global'
-import type { BaseInputProps } from './types'
+import type { BaseInputProps } from './types/BaseInputProps'
 
-const emit = defineEmits()
+const emit = defineEmits(['update:modelValue'])
 
 const props = withDefaults(defineProps<BaseInputProps>(), {
   modelValue: EMPTY_STRING,
@@ -58,9 +58,9 @@ const model = computed({
   get: () => props.modelValue,
   set: (value: string) => emit('update:modelValue', value)
 })
-const showTobLabel = computed(() => props.topLeftLabel || props.topRightLabel)
+const showTobLabel = computed(() => props.topLeftLabel ?? props.topRightLabel)
 const showBottomLabel = computed(
-  () => props.bottomLeftLabel || props.bottomRightLabel
+  () => props.bottomLeftLabel ?? props.bottomRightLabel
 )
 const showCloseButton = computed(() => model.value && props.clearButton)
 

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BaseBadgeProps } from './types'
+import type { BaseBadgeProps } from './types/BaseBadgeProps'
 
 defineProps<BaseBadgeProps>()
 </script>
