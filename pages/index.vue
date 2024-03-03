@@ -6,8 +6,8 @@
       <template v-if="list.length">
         <PostPreview
           v-for="(item, index) in list"
-          :item="item"
           :key="`${item.key}-${index}`"
+          :item="item"
         />
       </template>
       <!-- Empty list -->

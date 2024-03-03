@@ -1,10 +1,10 @@
 <template>
-  <ContentContainer :editProcess="editProcess" @click="onFocus">
+  <ContentContainer :edit-process="editProcess" @click="onFocus">
     <!-- Change value -->
     <input
       v-if="editProcess"
-      v-model="model"
       ref="target"
+      v-model="model"
       class="w-full bg-transparent text-3xl font-black text-black outline-none dark:text-white"
       @blur="editProcess = false"
     />

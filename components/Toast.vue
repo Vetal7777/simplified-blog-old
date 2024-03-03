@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <Transition>
-      <div class="du-toast fixed bottom-8 right-8 z-20" v-if="state.show">
+      <div v-if="state.show" class="du-toast fixed bottom-8 right-8 z-20">
         <div
           :class="[
             'du-alert ',

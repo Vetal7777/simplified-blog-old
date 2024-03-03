@@ -1,11 +1,11 @@
 <template>
   <ContentContainer
-    :editProcess="editProcess"
+    :edit-process="editProcess"
     @click="onFocus"
     @remove="$emit('remove')"
   >
     <!-- Show value -->
-    <div class="du-mockup-code" v-show="!editProcess">
+    <div v-show="!editProcess" class="du-mockup-code">
       <pre>
         <div 
           ref="container" class="pl-19"
@@ -13,13 +13,13 @@
       </pre>
     </div>
     <!-- Change value -->
-    <div class="du-mockup-code" v-show="editProcess">
+    <div v-show="editProcess" class="du-mockup-code">
       <pre>
         <textarea
+        ref="target"
+        v-model="model"
         :style="{height:`${containerHeight}px`}"
         class="w-full resize-none bg-transparent outline-none -ml-4.75"
-        v-model="model"
-        ref="target"
         @blur="editProcess = false"
         />
       </pre>

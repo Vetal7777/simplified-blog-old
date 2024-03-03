@@ -7,8 +7,8 @@
   >
     <slot />
     <BaseDeleteButton
-      class="delete-button"
       v-if="editMode && !editProcess"
+      class="delete-button"
       @remove="$emit('remove')"
     />
   </div>
@@ -19,6 +19,7 @@ import { useAppStore } from '~/stores/app'
 import type { ContentContainerProps } from './types'
 
 defineProps<ContentContainerProps>()
+defineEmits(['remove'])
 
 const appStore = useAppStore()
 

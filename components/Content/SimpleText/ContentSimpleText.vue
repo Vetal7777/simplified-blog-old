@@ -1,12 +1,12 @@
 <template>
-  <ContentContainer :editProcess="editProcess" @click="onFocus">
+  <ContentContainer :edit-process="editProcess" @click="onFocus">
     <div v-if="!editProcess" class="pb-2 text-black dark:text-white">
       {{ value }}
     </div>
     <textarea
       v-else
-      v-model="model"
       ref="target"
+      v-model="model"
       class="w-full resize-none bg-transparent text-black outline-none dark:text-white"
       @blur="editProcess = false"
     />

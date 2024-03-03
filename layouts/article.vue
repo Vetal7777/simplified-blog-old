@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="bg-primary-1 fixed z-10 flex w-full justify-end p-4">
+    <header class="fixed z-10 flex w-full justify-end bg-primary-1 p-4">
       <BaseButton title="Home" @click="navigateToHome" />
     </header>
     <main
