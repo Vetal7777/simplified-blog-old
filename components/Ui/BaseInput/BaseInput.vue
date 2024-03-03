@@ -81,6 +81,7 @@ import { BaseInputSize, BaseInputType, EMPTY_STRING } from '@/constants/global'
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import { z } from 'zod'
+import type { ErrorMessage } from '~/types/ErrorMessage'
 import type { BaseInputProps } from './types/BaseInputProps'
 
 const emit = defineEmits(['update:modelValue', 'error'])
@@ -103,7 +104,9 @@ const [validateValue, validateAttrs] = defineField(props.name, {
 
 const modelType = ref<BaseInputType>(props.type)
 
-const errorMessage = computed<string>(() => errors.value[props.name] ?? '')
+const errorMessage = computed<ErrorMessage>(
+  () => errors.value[props.name] ?? ''
+)
 const inputSizeClass = computed(() => ({
   'du-input-xs': inputSizeData.value.xs,
   'du-input-sm': inputSizeData.value.sm,
