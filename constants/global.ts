@@ -1,10 +1,10 @@
 export const EMPTY_STRING = ''
 
 export enum BaseButtonSize {
-  sm = 'sm',
-  lg = 'lg',
   xs = 'xs',
-  md = 'md'
+  sm = 'sm',
+  md = 'md',
+  lg = 'lg'
 }
 
 export enum BaseHeadingSize {
@@ -13,3 +13,14 @@ export enum BaseHeadingSize {
 }
 
 export enum AppTask {}
+export enum BaseInputSize {
+  xs = 'xs',
+  sm = 'sm',
+  md = 'md',
+  lg = 'lg'
+}
+
+export enum BaseInputType {
+  text = 'text',
+  password = 'password'
+}

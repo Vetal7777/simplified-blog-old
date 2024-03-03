@@ -2,6 +2,7 @@
   <div class="flex flex-col gap-2">
     <BaseInput
       v-model="state.content"
+      name="search"
       class="max-w-full"
       top-left-label="Search"
       clear-button
