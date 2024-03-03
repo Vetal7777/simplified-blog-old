@@ -16,11 +16,12 @@
       <!-- Input -->
       <input
         v-model="model"
+        v-bind="validateAttrs"
         :type="modelType"
         :placeholder="placeholder"
         class="du-input du-input-bordered my-2 w-full max-w-full"
         :class="{
-          ...sizeData
+          ...inputSizeClass
         }"
       />
       <!-- Buttons container -->
@@ -69,15 +70,20 @@
         {{ bottomRightLabel }}
       </span>
     </div>
+    <div v-if="showError" class="flex text-xs text-red">
+      {{ errors[name] }}
+    </div>
   </label>
 </template>
 
 <script setup lang="ts">
 import { BaseInputSize, BaseInputType, EMPTY_STRING } from '@/constants/global'
+import { toTypedSchema } from '@vee-validate/zod'
+import { useForm } from 'vee-validate'
+import { z } from 'zod'
 import type { BaseInputProps } from './types/BaseInputProps'
 
 const emit = defineEmits(['update:modelValue'])
-
 const props = withDefaults(defineProps<BaseInputProps>(), {
   modelValue: EMPTY_STRING,
   placeholder: EMPTY_STRING,
@@ -85,18 +91,38 @@ const props = withDefaults(defineProps<BaseInputProps>(), {
   type: BaseInputType.text
 })
 
+// VeeValidate
+const { errors, defineField } = useForm({
+  validationSchema: toTypedSchema(
+    z.object({
+      [props.name]: props.validate?.rules ?? z.any()
+    })
+  )
+})
+
+const [validateValue, validateAttrs] = defineField(props.name, {
+  validateOnModelUpdate: props.validate?.validateOnUpdate ?? true
+})
+//
+
 const modelType = ref<BaseInputType>(props.type)
 
 const model = computed({
   get: () => props.modelValue,
-  set: (value: string) => emit('update:modelValue', value)
+  set: (value: string) => {
+    validateValue.value = value
+    emit('update:modelValue', value)
+  }
 })
+const showError = computed(
+  () => Boolean(props.validate) && Boolean(errors.value[props.name])
+)
 const showTopLabel = computed(() => props.topLeftLabel ?? props.topRightLabel)
 const showBottomLabel = computed(
   () => props.bottomLeftLabel ?? props.bottomRightLabel
 )
 const showCloseButton = computed(() => model.value && props.clearButton)
-const sizeData = computed(() => ({
+const inputSizeClass = computed(() => ({
   'du-input-xs': inputSize.value.xs,
   'du-input-sm': inputSize.value.sm,
   'du-input-md': inputSize.value.md,
@@ -115,13 +141,13 @@ const inputSize = computed(() => ({
 const iconSize = computed(() => {
   switch (true) {
     case inputSize.value.xs:
-      return '12'
+      return '8'
     case inputSize.value.sm:
-      return '16'
+      return '12'
     case inputSize.value.md:
-      return '20'
+      return '16'
     case inputSize.value.lg:
-      return '24'
+      return '20'
   }
 })
 const passwordType = computed(() => ({
@@ -138,7 +164,6 @@ const clearModel = () => emit('update:modelValue', EMPTY_STRING)
 }
 
 .button-shell {
-  background-color: var(--fallback-b1, oklch(var(--b1) / var(--tw-bg-opacity)));
-  @apply flex items-center gap-2 pl-2;
+  @apply flex items-center gap-2 bg-white pl-2 dark:bg-main-2;
 }
 </style>
