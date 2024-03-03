@@ -1,5 +1,6 @@
 import moment from 'moment'
-import type { CreateNewDate, GetDateInFormat } from './types'
+import type { CreateNewDate } from './types/CreateNewDate'
+import type { GetDateInFormat } from './types/GetDateInFormat'
 
 export const useMomentJs = () => {
   const createNewDate: CreateNewDate = (date = undefined) => moment(date)
