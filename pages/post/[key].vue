@@ -5,7 +5,7 @@
       <div class="mr-48 flex flex-col gap-2">
         <BaseHeading :value="state.title" :size="BaseHeadingSize.lg" />
         <BaseDateLabel :value="state.createDate" />
-        <BaseBadge v-for="tag in state.tags" :value="tag" :key="tag" />
+        <BaseBadge v-for="tag in state.tags" :key="tag" :value="tag" />
       </div>
       <!-- Header edit button -->
       <PostController

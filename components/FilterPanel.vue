@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col gap-2">
     <BaseInput
+      v-model="state.content"
       class="max-w-full"
       top-left-label="Search"
-      v-model="state.content"
       clear-button
       @input="$emit('update', state)"
     />
