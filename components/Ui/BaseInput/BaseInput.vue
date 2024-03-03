@@ -115,13 +115,13 @@ const inputSize = computed(() => ({
 const iconSize = computed(() => {
   switch (true) {
     case inputSize.value.xs:
-      return '12'
+      return '8'
     case inputSize.value.sm:
-      return '16'
+      return '12'
     case inputSize.value.md:
-      return '20'
+      return '16'
     case inputSize.value.lg:
-      return '24'
+      return '20'
   }
 })
 const passwordType = computed(() => ({
