@@ -13,17 +13,23 @@ module.exports = {
       'main-1': 'rgb(133, 133, 133)',
       'main-2': '#1D232A',
       'primary-1': '#03FF00',
+      'primary-2': '#0000F6',
       white: '#FFFF',
       red: 'rgb(239 68 68)',
       black: 'rgb(0 0 0)'
     },
     extend: {
       animation: {
-        'slide-in': 'slideIn 0.3s forwards'
+        'slide-from-right': 'slideFromRight 0.3s forwards',
+        'slide-from-left': 'slideFromLeft 0.3s forwards'
       },
       keyframes: {
-        slideIn: {
+        slideFromRight: {
           '0%': { transform: 'translateX(20px)' },
+          '100%': { transform: 'translateX(0px)' }
+        },
+        slideFromLeft: {
+          '0%': { transform: 'translateX(-20px)' },
           '100%': { transform: 'translateX(0px)' }
         }
       },

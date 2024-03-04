@@ -31,7 +31,7 @@ const { editMode } = storeToRefs(appStore)
   @apply cursor-pointer border-black dark:border-white;
 
   .delete-button {
-    @apply flex animate-slide-in;
+    @apply animate-slide-from-right flex;
   }
 }
 </style>

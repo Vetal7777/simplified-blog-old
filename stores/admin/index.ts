@@ -1,5 +1,6 @@
 export const useAdminStore = defineStore('admin', () => {
-  const isAdmin = ref(false)
+  const admin = useCurrentUser()
+  const isAuth = computed(() => Boolean(admin.value))
 
-  return { isAdmin }
+  return { isAuth, admin }
 })

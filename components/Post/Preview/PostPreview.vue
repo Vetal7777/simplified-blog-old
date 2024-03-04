@@ -37,8 +37,8 @@
 <script setup lang="ts">
 import { BaseHeadingSize } from '~/constants/global'
 import { RouteName } from '~/constants/router'
-import { useBlogStore } from '~/stores/blog'
 import { useAdminStore } from '~/stores/admin'
+import { useBlogStore } from '~/stores/blog'
 import type { PostPreviewProps } from './types/PostPreviewProps'
 
 const { item } = defineProps<PostPreviewProps>()
@@ -46,19 +46,19 @@ const router = useRouter()
 const userStore = useAdminStore()
 const blogStore = useBlogStore()
 
-const { isAdmin } = storeToRefs(userStore)
+const { isAuth } = storeToRefs(userStore)
 
 const { deletePost } = blogStore
 
 const navigateToPostPage = () => {
   router.push({ name: RouteName.post, params: { key: item.key } })
 }
-const showDeleteBtn = computed(() => isAdmin.value)
+const showDeleteBtn = computed(() => isAuth.value)
 </script>
 
 <style lang="scss" scoped>
 .du-card:hover .delete-button {
-  @apply flex animate-slide-in;
+  @apply flex animate-slide-from-right;
 }
 </style>
 ~/stores/admin

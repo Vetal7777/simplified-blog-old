@@ -19,7 +19,7 @@
         />
       </template>
       <template #controllbar>
-        <BaseButton title="Sign in" :disabled="isError" />
+        <BaseButton title="Sign in" :disabled="isError" @click="onSubmit" />
       </template>
     </BaseForm>
   </div>
@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 import { BaseInputType } from '~/constants/global'
+import { RouteName } from '~/constants/router'
 import { required } from '~/constants/zod-rules'
 import type { ErrorMessage } from '~/types/ErrorMessage'
 import type { FormStateData } from '~/types/FormStateData'
@@ -35,6 +36,11 @@ enum FormKey {
   email = 'email',
   password = 'password'
 }
+
+const router = useRouter()
+const { $vuefire } = useNuxtApp()
+
+const { login } = $vuefire
 
 const state = ref<FormStateData>({
   [FormKey.email]: {
@@ -61,5 +67,15 @@ const isError = computed(() =>
 
 const onError = (key: FormKey, error: ErrorMessage) => {
   state.value[key].error = error
+}
+const onSubmit = async () => {
+  const data = await login(
+    state.value[FormKey.email].value,
+    state.value[FormKey.password].value
+  )
+
+  if (data) {
+    router.push({ name: RouteName.home })
+  }
 }
 </script>
