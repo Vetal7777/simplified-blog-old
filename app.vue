@@ -1,6 +1,8 @@
 <template>
   <NuxtLayout>
-    <NuxtPage />
+    <Transition class="animate-page">
+      <NuxtPage />
+    </Transition>
     <Toast />
     <LoadingSpinner />
   </NuxtLayout>

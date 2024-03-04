@@ -21,7 +21,8 @@ module.exports = {
     extend: {
       animation: {
         'slide-from-right': 'slideFromRight 0.3s forwards',
-        'slide-from-left': 'slideFromLeft 0.3s forwards'
+        'slide-from-left': 'slideFromLeft 0.3s forwards',
+        page: 'page 0.3s forwards'
       },
       keyframes: {
         slideFromRight: {
@@ -31,6 +32,10 @@ module.exports = {
         slideFromLeft: {
           '0%': { transform: 'translateX(-20px)' },
           '100%': { transform: 'translateX(0px)' }
+        },
+        page: {
+          '0%': { transform: 'translateX(-200px)', opacity: '0' },
+          '100%': { transform: 'translateX(0px)', opacity: '1' }
         }
       },
       lineHeight: {
