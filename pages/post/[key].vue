@@ -49,9 +49,7 @@ const editContent = ref<Content[] | null>(null)
 const { editMode } = storeToRefs(appStore)
 const { isAdmin } = storeToRefs(userStore)
 
-const state = computed<PostItem | undefined>(() =>
-  getPostByKey(route.params.key)
-)
+const state = computed<PostItem | null>(() => getPostByKey(route.params.key))
 const showController = computed(() => isAdmin.value)
 const onComplete = () => {
   if (state.value && editContent.value) {
@@ -91,6 +89,6 @@ onBeforeUnmount(() => {
 
 definePageMeta({
   layout: 'article',
-  middleware: ['post-server']
+  middleware: ['post-by-key-server']
 })
 </script>

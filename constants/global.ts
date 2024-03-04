@@ -12,6 +12,7 @@ export enum BaseHeadingSize {
   lg = 'lg'
 }
 
+export enum AppTask {}
 export enum BaseInputSize {
   xs = 'xs',
   sm = 'sm',
