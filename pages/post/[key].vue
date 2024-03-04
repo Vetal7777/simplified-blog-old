@@ -88,6 +88,7 @@ onBeforeUnmount(() => {
 })
 
 definePageMeta({
-  middleware: ['post-server']
+  layout: 'default',
+  middleware: ['post-by-key-server']
 })
 </script>
