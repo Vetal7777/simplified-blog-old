@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 import { INIT_FILTER_DATA } from '~/constants/filter'
-
 defineEmits(['update'])
 
 const state = ref(INIT_FILTER_DATA)
