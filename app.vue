@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
     <NuxtPage />
-    <Toast />
+    <BaseToast />
     <LoadingSpinner />
   </NuxtLayout>
 </template>
