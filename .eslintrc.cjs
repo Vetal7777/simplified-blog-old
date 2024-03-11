@@ -11,6 +11,7 @@ module.exports = {
   extends: ['@nuxt/eslint-config', 'plugin:prettier/recommended'],
   plugins: [],
   rules: {
+    'no-debugger': 'error',
     'no-console': 'error',
     'vue/require-prop-types': 'error',
     'prettier/prettier': [
