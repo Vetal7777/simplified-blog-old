@@ -11,6 +11,35 @@ module.exports = {
   extends: ['@nuxt/eslint-config', 'plugin:prettier/recommended'],
   plugins: [],
   rules: {
+    'vue/attributes-order': [
+      'error',
+      {
+        order: [
+          'DEFINITION',
+          'LIST_RENDERING',
+          'CONDITIONALS',
+          'RENDER_MODIFIERS',
+          'GLOBAL',
+          ['UNIQUE', 'SLOT'],
+          'TWO_WAY_BINDING',
+          'OTHER_DIRECTIVES',
+          'OTHER_ATTR',
+          'EVENTS',
+          'CONTENT'
+        ],
+        alphabetical: false
+      }
+    ],
+    'prefer-destructuring': [
+      'error',
+      {
+        array: true,
+        object: true
+      },
+      {
+        enforceForRenamedProperties: false
+      }
+    ],
     'no-debugger': 'error',
     'no-console': 'error',
     'vue/require-prop-types': 'error',
@@ -23,15 +52,6 @@ module.exports = {
         trailingComma: 'none'
       }
     ],
-    'prefer-destructuring': [
-      'error',
-      {
-        array: true,
-        object: true
-      },
-      {
-        enforceForRenamedProperties: false
-      }
-    ]
+    'vue/component-definition-name-casing': ['error', 'PascalCase']
   }
 }
