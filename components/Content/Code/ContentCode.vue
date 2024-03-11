@@ -1,15 +1,15 @@
 <template>
   <ContentContainer
     :edit-process="editProcess"
-    @click="onFocus"
     @remove="$emit('remove')"
+    @click="onFocus"
   >
     <!-- Show value -->
     <div v-show="!editProcess" class="du-mockup-code">
       <pre>
-        <div 
-          ref="container" class="pl-19"
-        >{{ value }}</div>
+        <div ref="container" class="pl-19">
+          {{ value }}
+        </div>
       </pre>
     </div>
     <!-- Change value -->
