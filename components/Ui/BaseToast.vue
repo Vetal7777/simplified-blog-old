@@ -25,6 +25,7 @@ import { ToastType } from '~/constants/toast'
 const { $toast } = useNuxtApp()
 
 const state = computed(() => $toast.state.value)
+console.log('true')
 </script>
 
 <style scoped lang="scss">
