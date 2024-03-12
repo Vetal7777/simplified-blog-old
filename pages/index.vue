@@ -28,4 +28,8 @@ const onFilter = (data: FilterData) => {
   /* eslint no-console:'warn' */
   console.log('filter', data)
 }
+
+definePageMeta({
+  layout: 'home-page'
+})
 </script>
