@@ -1,6 +1,6 @@
 {
   "*.js": ["eslint"],
   "*.scss": ["eslint"],
-  "*.ts": ["eslint"],
-  "*.vue": ["eslint"]
+  "*.ts": ["eslint", "tsc --noemit"],
+  "*.vue": ["eslint", "vue-tsc --noemit"]
 }
