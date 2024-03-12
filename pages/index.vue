@@ -25,6 +25,7 @@ const blogStore = useBlogStore()
 const { list } = storeToRefs(blogStore)
 
 const onFilter = (data: FilterData) => {
+  /* eslint no-console:'warn' */
   console.log('filter', data)
 }
 

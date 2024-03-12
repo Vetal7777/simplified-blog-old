@@ -11,13 +11,23 @@ module.exports = {
   extends: ['@nuxt/eslint-config', 'plugin:prettier/recommended'],
   plugins: [],
   rules: {
-    'prettier/prettier': [
+    'vue/attributes-order': [
       'error',
       {
-        plugins: ['prettier-plugin-tailwindcss'],
-        semi: false,
-        singleQuote: true,
-        trailingComma: 'none'
+        order: [
+          'DEFINITION',
+          'LIST_RENDERING',
+          'CONDITIONALS',
+          'RENDER_MODIFIERS',
+          'GLOBAL',
+          ['UNIQUE', 'SLOT'],
+          'TWO_WAY_BINDING',
+          'OTHER_DIRECTIVES',
+          'OTHER_ATTR',
+          'EVENTS',
+          'CONTENT'
+        ],
+        alphabetical: false
       }
     ],
     'prefer-destructuring': [
@@ -29,6 +39,19 @@ module.exports = {
       {
         enforceForRenamedProperties: false
       }
-    ]
+    ],
+    'no-debugger': 'error',
+    'no-console': 'error',
+    'vue/require-prop-types': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        plugins: ['prettier-plugin-tailwindcss'],
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'none'
+      }
+    ],
+    'vue/component-definition-name-casing': ['error', 'PascalCase']
   }
 }
