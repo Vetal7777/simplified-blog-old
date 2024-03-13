@@ -70,7 +70,7 @@
         {{ bottomRightLabel }}
       </span>
     </div>
-    <div v-if="showError" class="flex text-xs text-red">
+    <div v-if="showError as boolean" class="flex text-xs text-red">
       {{ errors[name] }}
     </div>
   </label>
